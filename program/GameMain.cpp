@@ -3,4 +3,6 @@
 int main()
 {
 	GameLoop::GetInstance().Run();
+
+	return 0;
 }

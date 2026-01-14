@@ -1,6 +1,5 @@
 #pragma once
 
-
 class GameLoop
 {
 
@@ -31,16 +30,12 @@ private:
 
 	// ‰Šú‰»
 	void Init();
-
 	// XV
 	void Update();
-
 	// •`‰æ
 	void Render();
-
 	// I—¹
-	void End() {};
-
+	void End();
 
 };
 
