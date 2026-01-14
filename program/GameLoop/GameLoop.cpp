@@ -2,10 +2,10 @@
 
 void GameLoop::Run()
 {
+	Init();
 
 	while (m_gameloop)
 	{
-		Init();
 		Update();
 		Render();
 	}
