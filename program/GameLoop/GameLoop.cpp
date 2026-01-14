@@ -22,6 +22,8 @@ void GameLoop::Init()
 void GameLoop::Update()
 {
 	std::cout << "Game Update" << std::endl;
+
+	std::cin.get();
 }
 
 void GameLoop::Render()
