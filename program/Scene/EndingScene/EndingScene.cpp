@@ -1,6 +1,6 @@
 #include "EndingScene.h"
 
-EndingScene::EndingScene(int floor)
+EndingScene::EndingScene()
 {
 
 }

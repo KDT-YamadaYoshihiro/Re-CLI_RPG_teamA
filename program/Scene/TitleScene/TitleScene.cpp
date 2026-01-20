@@ -1,6 +1,6 @@
 #include "TitleScene.h"
 
-TitleScene::TitleScene(int floor)
+TitleScene::TitleScene()
 {
 
 }

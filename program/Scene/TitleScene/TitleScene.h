@@ -4,7 +4,7 @@
 class TitleScene : public SceneBase
 {
 public:
-	TitleScene(int floor);	//　コンストラクタ & int floorで値の受け渡し
+	TitleScene();	//　コンストラクタ & int floorで値の受け渡し
 	~TitleScene();	//　デストラクタ
 
 	bool Init() override;

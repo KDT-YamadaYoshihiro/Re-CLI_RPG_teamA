@@ -1,15 +1,13 @@
 #pragma once
 #include "../SceneBase/SceneBase.h"
 
-class EventScene : public SceneBase
+class InGameScene : public SceneBase
 {
-
-	EventScene(int floor);
-	~EventScene();
+public:
+	InGameScene();
+	~InGameScene();
 
 	bool Init() override;
 	void Update() override;
 	void Render() override;
-
-
 };

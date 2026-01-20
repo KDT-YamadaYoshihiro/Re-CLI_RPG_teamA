@@ -4,7 +4,7 @@
 class EndingScene : public SceneBase
 {
 public:
-	EndingScene(int floor);
+	EndingScene();
 	~EndingScene();
 
 	bool Init() override;
