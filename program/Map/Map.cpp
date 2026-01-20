@@ -1,23 +1,38 @@
 #include "Map.h"
+#include "../TextView/TextView.h"
 #include<iostream>
 
-void Map::DrawPlayerInfo(/* Player */)
+void Map::DrawInfo(/* Playerと所持金*/)
 {
+	auto text = &TextView::GetInstance();
+	
+	// 描画するテキスト
+	std::string drawText = "";
+
+	// 左右が何のステージか
+	std::string leftStr = ReturnStr(m_floorTable[ m_currentFloor].Left);
+	std::string rightStr = ReturnStr(m_floorTable[m_currentFloor].Right);
+
+
 	//所持金: $$$
 	//
 	//player1 hp : 7 / 15
 	//player2 hp : 22 / 40
 	//player3 hp : 10 / 10
 
-	std::string leftStr = ReturnStr(FloorTable[currentFloor].Left);
-	std::string rightStr = ReturnStr(FloorTable[currentFloor].Right);
 
-	std::printf("次のステージ");
-	std::printf("1 %s | 2 %s", leftStr.c_str(), rightStr.c_str());
+	drawText = "次のステージ";
+	text->AddText(drawText);
+
+	drawText = "1 %s | 2 %s", leftStr.c_str(), rightStr.c_str();
+	text->AddText(drawText);
 }
 
 SceneType Map::SelectScene()
 {
+	auto text = &TextView::GetInstance();
+
+
 	int select;
 
 	while (true)
@@ -29,7 +44,7 @@ SceneType Map::SelectScene()
 			break;
 		}
 
-		std::printf("無効な入力です");
+		text->AddText("無効な入力です");
 	}
 
 	// 選択されたシーンを返す
@@ -39,7 +54,7 @@ SceneType Map::SelectScene()
 
 SceneType Map::ReturnScene(int select)
 {
-	const auto& floor = FloorTable[currentFloor];
+	const auto& floor = m_floorTable[m_currentFloor];
 
 	SceneType type = SceneType::NONE;
 
@@ -53,7 +68,7 @@ SceneType Map::ReturnScene(int select)
 	}
 
 	// 階層を増やす
-	currentFloor++;
+	m_currentFloor++;
 
 	return type;
 }
@@ -65,19 +80,19 @@ std::string Map::ReturnStr(SceneType type)
 
 	switch (type)
 	{
-	case SceneType::Battle:
+	case SceneType::BATTLE:
 		nextStr = "戦闘";
 		return nextStr;
 
-	case SceneType::Shop:
+	case SceneType::SHOP:
 		nextStr = "ショップ";
 		return nextStr;
 
-	case SceneType::Event:
+	case SceneType::EVENT:
 		nextStr = "イベント";
 		return nextStr;
 
-	case SceneType::Boss:
+	case SceneType::BOSS:
 		nextStr = "ボス";
 		return nextStr;
 
