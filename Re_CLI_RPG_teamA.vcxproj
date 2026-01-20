@@ -126,7 +126,6 @@
     <ClCompile Include="program\Scene\EndingScene\EndingScene.cpp" />
     <ClCompile Include="program\GameLoop\GameLoop.cpp" />
     <ClCompile Include="program\GameMain.cpp" />
-    <ClCompile Include="program\Scene\SceneBase\SceneBase.cpp" />
     <ClCompile Include="program\SceneManager\SceneManager.cpp" />
     <ClCompile Include="program\Scene\InGameScene\InGameScene.cpp" />
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
@@ -138,6 +137,7 @@
     <ClInclude Include="program\SceneManager\SceneManager.h" />
     <ClInclude Include="program\Scene\InGameScene\InGameScene.h" />
     <ClInclude Include="program\Scene\TitleScene\TitleScene.h" />
+    <ClInclude Include="program\Singleton\Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
