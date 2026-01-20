@@ -123,11 +123,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="program\Scene\EndingScene\EndingScene.cpp" />
+    <ClCompile Include="program\Scene\EventScene\EventScene.cpp" />
     <ClCompile Include="program\GameLoop\GameLoop.cpp" />
     <ClCompile Include="program\GameMain.cpp" />
+    <ClCompile Include="program\Scene\SceneBase\SceneBase.cpp" />
+    <ClCompile Include="program\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="program\Scene\BattleScene\BattleScene.cpp" />
+    <ClCompile Include="program\Scene\MapScene\MapScene.cpp" />
+    <ClCompile Include="program\Scene\ShopScene\ShopScene.cpp" />
+    <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program\Scene\EndingScene\EndingScene.h" />
     <ClInclude Include="program\GameLoop\GameLoop.h" />
+    <ClInclude Include="program\Scene\EventScene\EventScene.h" />
+    <ClInclude Include="program\Scene\SceneBase\SceneBase.h" />
+    <ClInclude Include="program\SceneManager\SceneManager.h" />
+    <ClInclude Include="program\Scene\BattleScene\BattleScene.h" />
+    <ClInclude Include="program\Scene\MapScene\MapScene.h" />
+    <ClInclude Include="program\Scene\ShopScene\ShopScene.h" />
+    <ClInclude Include="program\Scene\TitleScene\TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
