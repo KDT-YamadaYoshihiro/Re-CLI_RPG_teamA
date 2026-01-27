@@ -13,13 +13,14 @@ enum class SceneType
 
 struct FloorChoice
 {
-	SceneType Left;
-	SceneType Right;
+	SceneType Up;
+	SceneType Down;
 };
 
 class Map
 {
 public:
+
 	/// <summary>
 	/// 情報を出力
 	/// </summary>
@@ -37,7 +38,6 @@ public:
 	SceneType ReturnScene(int select);
 
 private:
-
 	/// <summary>
 	/// ステージを文字列に変更
 	/// <summary>
@@ -47,8 +47,8 @@ private:
 	int m_currentFloor = 0;
 
 	static constexpr int STAGE_MAX = 10;		// 最大ステージ数
-	static constexpr int SELECT_LEFT = 1;		// 入力値：左
-	static constexpr int SELECT_RIGHT = 2;		// 入力値：右
+	static constexpr int SELECT_UP = 1;			// 入力値：上
+	static constexpr int SELECT_DOWN = 2;		// 入力値：下
 	static constexpr int INDEX_OFFSET = 1;		// 入力値と配列添字の差分
 
 	std::array<FloorChoice, STAGE_MAX> m_floorTable = { {
