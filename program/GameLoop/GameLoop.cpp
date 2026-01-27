@@ -1,6 +1,7 @@
 #include "GameLoop.h"
 #include "../System/TextView/TextView.h"
 #include "../SceneManager/SceneManager.h"
+#include "../System/KeyInput/KeyInput.h"
 #include <iostream>
 
 void GameLoop::Run()
@@ -24,6 +25,8 @@ void GameLoop::Init()
 
 void GameLoop::Update()
 {
+	KeyInput::Instance().Update();
+
 	TextView::Instance().AddText("Game Update");
 	SceneManager::Instance().Update();
 

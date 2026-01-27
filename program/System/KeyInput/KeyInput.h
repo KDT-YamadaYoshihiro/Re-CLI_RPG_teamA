@@ -1,8 +1,12 @@
 #pragma once
 #include <conio.h>
 
-class KeyInput {
+class KeyInput : public Singleton<KeyInput>
+{
+	friend class Singleton<KeyInput>;
 
+	KeyInput() = default;
+	virtual ~KeyInput() = default;
 
 public:
 
@@ -13,30 +17,30 @@ public:
 	};
 
 	void Update() {
-		curentKey = NONE;
+		currentKey = NONE;
 		if (_kbhit()) {
 			int ch = _getch();
 			if (ch == 0 or ch == 224) {
 				ch = _getch();
 				switch (ch){
 				// 方向キー
-				case 72: curentKey =  UP  ; break;
-				case 80: curentKey = DOWN ; break;
-				case 75: curentKey = LEFT ; break;
-				case 77: curentKey = RIGHT; break;
+				case 72: currentKey =  UP  ; break;
+				case 80: currentKey = DOWN ; break;
+				case 75: currentKey = LEFT ; break;
+				case 77: currentKey = RIGHT; break;
 				// 選択用のキー
-				case 13: curentKey = ENTER; break; 
-				case 27: curentKey = ESC;   break;
-				case 32: curentkey = SPACE; break;
+				case 13: currentKey = ENTER; break; 
+				case 27: currentKey = ESC;   break;
+				case 32: currentKey = SPACE; break;
 				}
 			}
 		}
 	}
 
-	KeyType GetKey() { return curentKey; }
+	KeyType GetKey() { return currentKey; }
 	bool ChechKey(KeyType key)
 	{
-		if (key == curentKey)
+		if (key == currentKey)
 		{
 			return true;
 		}
@@ -45,5 +49,5 @@ public:
 
 private:
 
-	KeyType curentKey = KeyType::NONE;
+	KeyType currentKey = KeyType::NONE;
 };
