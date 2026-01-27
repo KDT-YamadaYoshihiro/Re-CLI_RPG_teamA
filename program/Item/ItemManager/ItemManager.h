@@ -23,10 +23,10 @@ private:
 public:
 
 	// Itemの破棄（使用）
-	
+	void UseItem(int itemID);
 	// 全所持Item情報の取得（*n単位表示で）
-	
+	void GetAllItemInfo();
 	// 指定Item情報の取得
-
+	std::shared_ptr<ItemBase> GetItemInfo(int itemID);	//　参照渡し（itemBaseのポインタ）
 };
 
