@@ -1,25 +1,17 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "../../Singleton/Singleton.h"
 
-class TextView
+class TextView : public Singleton<TextView>
 {
+
+	friend class Singleton<TextView>;
 
 	TextView() = default;
 	virtual ~TextView() = default;
 
 public:
-
-
-	// コピーの禁止
-	TextView(const TextView&) = delete;
-	TextView& operator = (const TextView) = delete;
-	static TextView& GetInstance()
-	{
-		static TextView instance;
-		return instance;
-	}
-
 
 	// テキスト内容の追加
 	void AddText(std::string arg_text);
