@@ -1,5 +1,5 @@
 #include "EnemyFactory.h"
-#include "../Enemy/EnemyDataBase.h"
+#include "../../Enemy/EnemyDataBase.h"
 
 std::unique_ptr<Character>
 EnemyFactory::CreateEnemy(const std::string& enemyId) {
@@ -17,4 +17,6 @@ EnemyFactory::CreateEnemy(const std::string& enemyId) {
 	sta.DEF = data.enemyState.DEF;
 	sta.INT = data.enemyState.INT;
 	sta.MND = data.enemyState.MND;
+	
+	return;
 }
