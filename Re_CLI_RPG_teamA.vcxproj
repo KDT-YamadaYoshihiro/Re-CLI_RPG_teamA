@@ -131,6 +131,7 @@
     <ClCompile Include="program\Scene\EndingScene\EndingScene.cpp" />
     <ClCompile Include="program\GameLoop\GameLoop.cpp" />
     <ClCompile Include="program\GameMain.cpp" />
+    <ClCompile Include="program\System\TextView\TextView.cpp" />
     <ClCompile Include="program\SceneManager\SceneManager.cpp" />
     <ClCompile Include="program\Scene\InGameScene\InGameScene.cpp" />
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
@@ -143,6 +144,9 @@
     <ClInclude Include="program\Item\WastageItem\WastageItem.h" />
     <ClInclude Include="program\Scene\EndingScene\EndingScene.h" />
     <ClInclude Include="program\GameLoop\GameLoop.h" />
+    <ClInclude Include="program\Map\Map.h" />
+    <ClInclude Include="program\System\KeyInput\KeyInput.h" />
+    <ClInclude Include="program\System\TextView\TextView.h" />
     <ClInclude Include="program\Scene\SceneBase\SceneBase.h" />
     <ClInclude Include="program\SceneManager\SceneManager.h" />
     <ClInclude Include="program\Scene\InGameScene\InGameScene.h" />

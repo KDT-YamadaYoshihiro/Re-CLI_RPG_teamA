@@ -10,8 +10,8 @@ class SceneManager : public Singleton<SceneManager> {
 	// private や protectedメンバ変数にアクセスできるようにする
 	friend class Singleton<SceneManager>;
 private:
-	std::unique_ptr<SceneBase> currentScene;	// 現在のシーン
-	std::unique_ptr<SceneBase> nextScene;		// 次のシーン
+	std::unique_ptr<SceneBase> m_currentScene;	// 現在のシーン
+	std::unique_ptr<SceneBase> m_nextScene;		// 次のシーン
 public:
 	SceneManager();
 	~SceneManager();
@@ -19,7 +19,7 @@ public:
 	template <typename T, typename... Args>
 	void ChangeScene(Args&&... args) {
 		// std::forward テンプレート関数の引数を元の値カテゴリを保ったまま別の関数に渡す
-		nextScene = std::make_unique<T>(std::forward<Args>(args)...);
+		m_nextScene = std::make_unique<T>(std::forward<Args>(args)...);
 	}
 	bool Init();
 	void Update();

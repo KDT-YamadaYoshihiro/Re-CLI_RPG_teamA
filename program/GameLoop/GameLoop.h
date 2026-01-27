@@ -1,24 +1,20 @@
 #pragma once
+#include "../Singleton/Singleton.h"
 
-class GameLoop
+class GameLoop: public Singleton<GameLoop>
 {
 
-	// ゲームループ判定
-	bool m_gameloop = true;
+	friend class Singleton<GameLoop>;
+
 
 	GameLoop() = default;
 	virtual ~GameLoop() = default;
 
+	// ゲームループ判定
+	bool m_gameloop = true;
+
 public:
 
-	GameLoop(const GameLoop&) = delete;
-	GameLoop& operator = (const GameLoop&) = delete;
-
-	static GameLoop& GetInstance()
-	{
-		static GameLoop instance;
-		return instance;
-	}
 
 	// 全体更新
 	void Run();
