@@ -19,6 +19,7 @@ struct FloorChoice
 
 class Map
 {
+public:
 	/// <summary>
 	/// 情報を出力
 	/// </summary>
@@ -45,8 +46,10 @@ private:
 	// 現在の階層
 	int m_currentFloor = 0;
 
-	// 最大ステージ数
-	static constexpr int STAGE_MAX = 10;
+	static constexpr int STAGE_MAX = 10;		// 最大ステージ数
+	static constexpr int SELECT_LEFT = 1;		// 入力値：左
+	static constexpr int SELECT_RIGHT = 2;		// 入力値：右
+	static constexpr int INDEX_OFFSET = 1;		// 入力値と配列添字の差分
 
 	std::array<FloorChoice, STAGE_MAX> m_floorTable = { {
 	{ SceneType::BATTLE, SceneType::SHOP },		// 1階

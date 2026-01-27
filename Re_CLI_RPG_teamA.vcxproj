@@ -126,10 +126,12 @@
     <ClCompile Include="program\Map\Map.cpp" />
     <ClCompile Include="program\GameLoop\GameLoop.cpp" />
     <ClCompile Include="program\GameMain.cpp" />
+    <ClCompile Include="program\TextView\TextView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="program\GameLoop\GameLoop.h" />
     <ClInclude Include="program\Map\Map.h" />
+    <ClInclude Include="program\TextView\TextView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
