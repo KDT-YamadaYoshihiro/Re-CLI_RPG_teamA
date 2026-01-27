@@ -1,6 +1,6 @@
 #include "ItemBase.h"
 
-void ItemBase::ItemEffect(std::unique_ptr<Character> arg_taget)
+void ItemBase::ItemEffect(std::unique_ptr<Character>& arg_taget)
 {
 	switch (itemData.type)
 	{
