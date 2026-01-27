@@ -5,7 +5,7 @@ class SceneBase {
 public:
 
 	SceneBase() = default;
-	~SceneBase() = default;
+	virtual ~SceneBase() = default;
 
 	virtual bool Init() = 0;
 	virtual void Update() = 0;
