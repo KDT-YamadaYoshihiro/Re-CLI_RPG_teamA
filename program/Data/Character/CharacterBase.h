@@ -14,8 +14,6 @@ struct Status {
 	bool isLife = true;
 
 	int ID;
-	int Lv = 1;
-	int Exp = 0;
 	int MaxHP = 50;
 	int hp = MaxHP;
 
@@ -39,7 +37,7 @@ public:
 
 	Character(Status baseStatas) :state(baseStatas){}
 
-	~Character(){}
+	virtual ~Character(){}
 
 	/// <summary>
 	/// ファクションゲッター
