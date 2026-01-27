@@ -3,6 +3,17 @@
 #include "../../Singleton/Singleton.h"
 #include <unordered_map>
 
+enum class ItemIdType
+{
+	LowerPotion,  
+	IntermediatePotion,
+	HighPotion,
+	AttackPowerUp,
+	DefensePowerUp,
+	Relic_AttackPowerUp,
+	Relic_DefencePowerUp
+};
+
 class ItemFactory : public Singleton<ItemFactory>
 {
 	friend class Singleton<ItemFactory>;
