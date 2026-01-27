@@ -5,27 +5,33 @@
 #include <string>
 
 
-void Map::DrawInfo(/* Player‚ÆŠ‹à*/)
+/**
+ * @brief Render the current floor's map information (header and selectable options).
+ *
+ * Builds display text for the current floor's "Up" and "Down" scene types, writes a header
+ * and the composed stage line to the global TextView, then triggers rendering and resets the view.
+ */
+void Map::DrawInfo(/* Playerï¿½Æï¿½ï¿½ï¿½ï¿½ï¿½*/)
 {
 
-	// •`‰æ‚·‚éƒeƒLƒXƒg
+	// ï¿½`ï¿½æ‚·ï¿½ï¿½eï¿½Lï¿½Xï¿½g
 	std::string drawText = "";
 
-	// ¶‰E‚ª‰½‚ÌƒXƒe[ƒW‚©
+	// ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ÌƒXï¿½eï¿½[ï¿½Wï¿½ï¿½
 	std::string upStr = ReturnStr(m_floorTable[m_currentFloor].Up);
 	std::string downStr = ReturnStr(m_floorTable[m_currentFloor].Down);
 
 
-	//Š‹à: $$$
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: $$$
 	//
 	//player1 hp : 7 / 15
 	//player2 hp : 22 / 40
 	//player3 hp : 10 / 10
 
-	// ƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒXæ“¾
+	// ï¿½eï¿½Lï¿½Xï¿½gï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½æ“¾
 	auto& text = TextView::Instance();
 
-	text.AddText("Ÿ‚ÌƒXƒe[ƒW\n");
+	text.AddText("ï¿½ï¿½ï¿½ÌƒXï¿½eï¿½[ï¿½W\n");
 
 	std::string stageText = std::to_string(SELECT_UP) + " " + upStr + " | " +
 		std::to_string(SELECT_DOWN) + " " + downStr;
@@ -35,11 +41,19 @@ void Map::DrawInfo(/* Player‚ÆŠ‹à*/)
 	text.ResetText();
 }
 
+/**
+ * @brief Present an interactive menu to choose between the current floor's Up and Down options.
+ *
+ * Displays the Up and Down option strings for the current floor, allows navigation with the UP/DOWN keys
+ * and confirmation with ENTER, then advances the current floor and returns the chosen scene type.
+ *
+ * @return SceneType The scene type corresponding to the selected option; the map's current floor index is incremented.
+ */
 SceneType Map::SelectScene()
 {
-	// “ü—ÍƒCƒ“ƒXƒ^ƒ“ƒXæ“¾
+	// ï¿½ï¿½ï¿½ÍƒCï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½æ“¾
 	auto& input = KeyInput::Instance();
-	// ƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒXæ“¾
+	// ï¿½eï¿½Lï¿½Xï¿½gï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½æ“¾
 	auto& text = TextView::Instance();
 
 	int cursor = 0; // 0: UP, 1: DOWN
@@ -47,26 +61,26 @@ SceneType Map::SelectScene()
 
 	while (!selected)
 	{
-		// “ü—ÍXV
+		// ï¿½ï¿½ï¿½ÍXï¿½V
 		input.Update();
 
-		// ƒJ[ƒ\ƒ‹ˆÚ“®
+		// ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 		if (input.ChechKey(KeyInput::UP))   cursor = 0;
 		if (input.ChechKey(KeyInput::DOWN)) cursor = 1;
 
-		// Œˆ’è
+		// ï¿½ï¿½ï¿½ï¿½
 		if (input.ChechKey(KeyInput::ENTER)) {
 			selected = true;
-			break; // ƒ‹[ƒv‚ğ”²‚¯‚é
+			break; // ï¿½ï¿½ï¿½[ï¿½vï¿½ğ”²‚ï¿½ï¿½ï¿½
 		}
 
 		std::string upStr = ReturnStr(m_floorTable[m_currentFloor].Up);
 		std::string downStr = ReturnStr(m_floorTable[m_currentFloor].Down);
 
-		text.ResetText(); // •`‰æ‘O‚Éˆê“xƒŠƒZƒbƒg
-		text.AddText("Ÿ‚ÌƒXƒe[ƒW‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢F\n");
+		text.ResetText(); // ï¿½`ï¿½ï¿½Oï¿½Éˆï¿½xï¿½ï¿½ï¿½Zï¿½bï¿½g
+		text.AddText("ï¿½ï¿½ï¿½ÌƒXï¿½eï¿½[ï¿½Wï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½F\n");
 
-		// ‘I‘ğ’†‚Ì•û‚ÉƒJ[ƒ\ƒ‹‚ğ•\¦
+		// ï¿½Iï¿½ğ’†‚Ì•ï¿½ï¿½ÉƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
 		std::string display = (cursor == 0 ? "> " : "  ") + upStr + "\n" +
 			(cursor == 1 ? "> " : "  ") + downStr + "\n";
 
@@ -74,43 +88,62 @@ SceneType Map::SelectScene()
 		text.TextRender();
 	}
 
-	// ‘I‘ğ‚³‚ê‚½ƒV[ƒ“‚ğ•Ô‚·
-	// “ü—Í‚³‚¹‚é”š‚ÆƒCƒ“ƒfƒbƒNƒX‚ğ‡‚í‚¹‚é
+	// ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½
+	// ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½é”ï¿½ï¿½ï¿½ÆƒCï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½í‚¹ï¿½ï¿½
 	return ReturnScene(cursor);
 }
 
+/**
+ * Selects the next scene type from the current floor's Up/Down option and advances the current floor.
+ *
+ * Advances the map's current floor index by one as a side effect.
+ *
+ * @param select Choice index: `0` selects the floor's Up scene, any other value selects the Down scene.
+ * @return SceneType The scene type corresponding to the selected option.
+ */
 SceneType Map::ReturnScene(int select)
 {
     const auto& floor = m_floorTable[m_currentFloor];
     
     SceneType type = (select == 0) ? floor.Up : floor.Down;
 
-    // ŠK‘w‚ği‚ß‚é
+    // ï¿½Kï¿½wï¿½ï¿½iï¿½ß‚ï¿½
     m_currentFloor++;
     return type;
 }
 
+/**
+ * @brief Return the display label for a SceneType.
+ *
+ * @param type The scene type to convert into a display string.
+ * @return std::string The label corresponding to `type`:
+ * - `SceneType::BATTLE` -> "ï¿½í“¬"
+ * - `SceneType::SHOP`   -> "ï¿½Vï¿½ï¿½ï¿½bï¿½v"
+ * - `SceneType::EVENT`  -> "ï¿½Cï¿½xï¿½ï¿½ï¿½g"
+ * - `SceneType::BOSS`   -> "ï¿½{ï¿½X"
+ * - default              -> "ï¿½ï¿½ï¿½ï¿½ï¿½ÈƒVï¿½[ï¿½ï¿½"
+ */
 std::string Map::ReturnStr(SceneType type)
 {
 
-	std::string nextStr = "–³Œø‚ÈƒV[ƒ“";
+	std::string nextStr = "ï¿½ï¿½ï¿½ï¿½ï¿½ÈƒVï¿½[ï¿½ï¿½";
 
 	switch (type)
 	{
 	case SceneType::BATTLE:
-		nextStr = "í“¬";
+		nextStr = "ï¿½í“¬";
 		return nextStr;
 
 	case SceneType::SHOP:
-		nextStr = "ƒVƒ‡ƒbƒv";
+		nextStr = "ï¿½Vï¿½ï¿½ï¿½bï¿½v";
 		return nextStr;
 
 	case SceneType::EVENT:
-		nextStr = "ƒCƒxƒ“ƒg";
+		nextStr = "ï¿½Cï¿½xï¿½ï¿½ï¿½g";
 		return nextStr;
 
 	case SceneType::BOSS:
-		nextStr = "ƒ{ƒX";
+		nextStr = "ï¿½{ï¿½X";
 		return nextStr;
 
 	default:
