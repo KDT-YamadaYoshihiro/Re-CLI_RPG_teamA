@@ -1,60 +1,77 @@
 #include "Map.h"
+#include "../TextView/TextView.h"
 #include<iostream>
 
-void Map::DrawPlayerInfo(/* Player */)
+#include <string>
+
+void Map::DrawInfo(/* Playerと所持金*/)
 {
+
+	// 描画するテキスト
+	std::string drawText = "";
+
+	// 左右が何のステージか
+	std::string leftStr = ReturnStr(m_floorTable[m_currentFloor].Left);
+	std::string rightStr = ReturnStr(m_floorTable[m_currentFloor].Right);
+
+
 	//所持金: $$$
 	//
 	//player1 hp : 7 / 15
 	//player2 hp : 22 / 40
 	//player3 hp : 10 / 10
 
-	std::string leftStr = ReturnStr(FloorTable[currentFloor].Left);
-	std::string rightStr = ReturnStr(FloorTable[currentFloor].Right);
+	// テキストインスタンス取得
+	auto text = &TextView::GetInstance();
 
-	std::printf("次のステージ");
-	std::printf("1 %s | 2 %s", leftStr.c_str(), rightStr.c_str());
+	text->AddText("次のステージ\n");
+
+	std::string stageText = std::to_string(SELECT_LEFT) + " " + leftStr + " | " +
+		std::to_string(SELECT_RIGHT) + " " + rightStr;
+	text->AddText(stageText + "\n");
+
+	text->TextRender();
+	text->ResetText();
 }
 
 SceneType Map::SelectScene()
 {
 	int select;
 
+	// テキストインスタンス取得
+	auto text = &TextView::GetInstance();
+
 	while (true)
 	{
 		std::cin >> select;
 
-		if (select == 1 || select == 2)
+		if (select == SELECT_LEFT || select == SELECT_RIGHT)
 		{
 			break;
 		}
 
-		std::printf("無効な入力です");
+		text->AddText("無効な入力です\n");
+		text->TextRender();
+		text->ResetText();
 	}
 
 	// 選択されたシーンを返す
-	// 入力とインデックスを合わせる
-	return ReturnScene(select - 1);
+	// 入力させる数字とインデックスを合わせる
+	return ReturnScene(select - INDEX_OFFSET);
 }
 
 SceneType Map::ReturnScene(int select)
 {
-	const auto& floor = FloorTable[currentFloor];
+	// 現在の階の選択肢を取得
+	const auto& floor = m_floorTable[m_currentFloor];
 
-	SceneType type = SceneType::NONE;
+	const int LEFT_INDEX = 0;
 
-	if (select == 0)
-	{
-		type = floor.Left;
-	}
-	else
-	{
-		type = floor.Right;
-	}
+	// 選択されたシーンを取得
+	SceneType type = (select == LEFT_INDEX) ? floor.Left : floor.Right;
 
-	// 階層を増やす
-	currentFloor++;
-
+	// 階層を進める
+	m_currentFloor++;
 	return type;
 }
 
@@ -65,19 +82,19 @@ std::string Map::ReturnStr(SceneType type)
 
 	switch (type)
 	{
-	case SceneType::Battle:
+	case SceneType::BATTLE:
 		nextStr = "戦闘";
 		return nextStr;
 
-	case SceneType::Shop:
+	case SceneType::SHOP:
 		nextStr = "ショップ";
 		return nextStr;
 
-	case SceneType::Event:
+	case SceneType::EVENT:
 		nextStr = "イベント";
 		return nextStr;
 
-	case SceneType::Boss:
+	case SceneType::BOSS:
 		nextStr = "ボス";
 		return nextStr;
 

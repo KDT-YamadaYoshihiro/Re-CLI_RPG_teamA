@@ -4,10 +4,10 @@
 
 enum class SceneType
 {
-	Battle,
-	Shop,
-	Event,
-	Boss,
+	BATTLE,
+	SHOP,
+	EVENT,
+	BOSS,
 	NONE,
 };
 
@@ -19,10 +19,11 @@ struct FloorChoice
 
 class Map
 {
+public:
 	/// <summary>
-	/// ƒvƒŒƒCƒ„[‚Ìî•ñ‚ğo—Í
+	/// î•ñ‚ğo—Í
 	/// </summary>
-	void DrawPlayerInfo();
+	void DrawInfo(/* Player‚ÆŠ‹à*/);
 
 	/// <summary>
 	/// Ÿ‚ÌƒV[ƒ“‚ğ‘I‘ğ
@@ -37,24 +38,29 @@ class Map
 
 private:
 
+	/// <summary>
+	/// ƒXƒe[ƒW‚ğ•¶š—ñ‚É•ÏX
+	/// <summary>
 	std::string ReturnStr(SceneType type);
 
 	// Œ»İ‚ÌŠK‘w
-	int currentFloor = 0;
+	int m_currentFloor = 0;
 
-	// Å‘åƒXƒe[ƒW”
-	static constexpr int STAGE_MAX = 10;
+	static constexpr int STAGE_MAX = 10;		// Å‘åƒXƒe[ƒW”
+	static constexpr int SELECT_LEFT = 1;		// “ü—Í’lF¶
+	static constexpr int SELECT_RIGHT = 2;		// “ü—Í’lF‰E
+	static constexpr int INDEX_OFFSET = 1;		// “ü—Í’l‚Æ”z—ñ“Yš‚Ì·•ª
 
-	std::array<FloorChoice, STAGE_MAX> FloorTable = { {
-	{ SceneType::Battle, SceneType::Shop },		// 1ŠK
-	{ SceneType::Battle, SceneType::Battle },	// 2ŠK
-	{ SceneType::Battle, SceneType::Event },	// 3ŠK
-	{ SceneType::Shop,   SceneType::Event },	// 4ŠK
-	{ SceneType::Battle, SceneType::Battle },	// 5ŠK
-	{ SceneType::Event,  SceneType::Shop },		// 6ŠK
-	{ SceneType::Battle, SceneType::Event },	// 7ŠK
-	{ SceneType::Battle, SceneType::Battle },	// 8ŠK
-	{ SceneType::Shop,   SceneType::Event },	// 9ŠK
-	{ SceneType::Boss,   SceneType::Boss },		// 10ŠK
+	std::array<FloorChoice, STAGE_MAX> m_floorTable = { {
+	{ SceneType::BATTLE, SceneType::SHOP },		// 1ŠK
+	{ SceneType::BATTLE, SceneType::BATTLE },	// 2ŠK
+	{ SceneType::BATTLE, SceneType::EVENT },	// 3ŠK
+	{ SceneType::SHOP,   SceneType::EVENT },	// 4ŠK
+	{ SceneType::BATTLE, SceneType::BATTLE },	// 5ŠK
+	{ SceneType::EVENT,  SceneType::SHOP },		// 6ŠK
+	{ SceneType::BATTLE, SceneType::EVENT },	// 7ŠK
+	{ SceneType::BATTLE, SceneType::BATTLE },	// 8ŠK
+	{ SceneType::SHOP,   SceneType::EVENT },	// 9ŠK
+	{ SceneType::BOSS,   SceneType::BOSS },		// 10ŠK
 }   };
 };
