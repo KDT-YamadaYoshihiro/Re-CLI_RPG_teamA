@@ -24,9 +24,6 @@
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="program\Scene\SceneBase\SceneBase.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="program\SceneManager\SceneManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -34,6 +31,18 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="program\Scene\EndingScene\EndingScene.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="program\Item\ItemFactory\ItemFactory.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="program\Item\ItemManager\ItemManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="program\Item\RelicItem\RelicItem.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="program\Item\WastageItem\WastageItem.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,6 +63,24 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="program\Scene\EndingScene\EndingScene.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Singleton\Singleton.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Item\ItemFactory\ItemFactory.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Item\ItemManager\ItemManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Item\RelicItem\RelicItem.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Item\WastageItem\WastageItem.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Item\ItemBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,9 +11,9 @@ private:
 public:
 
 	// コンストラクタ・初期化
-
+	WastageItem(const ItemData& arg_data) : ItemBase(arg_data) {};
 	// Itemの効果適用(override)
-
+	virtual void ItemEffect() override;	
 
 };
 

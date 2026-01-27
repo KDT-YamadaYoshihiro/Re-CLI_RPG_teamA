@@ -18,14 +18,14 @@ class ItemManager
 private:
 
 	// Item所持管理をunordered_mapで行う
-
+	std::unordered_map<int, std::shared_ptr<ItemBase>> m_itemMap;
 
 public:
 
 	// Itemの破棄（使用）
-
+	
 	// 全所持Item情報の取得（*n単位表示で）
-
+	
 	// 指定Item情報の取得
 
 };

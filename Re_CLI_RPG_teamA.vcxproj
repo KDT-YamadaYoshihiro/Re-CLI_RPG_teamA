@@ -123,6 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="program\Item\ItemFactory\ItemFactory.cpp" />
+    <ClCompile Include="program\Item\ItemManager\ItemManager.cpp" />
+    <ClCompile Include="program\Item\RelicItem\RelicItem.cpp" />
+    <ClCompile Include="program\Item\WastageItem\WastageItem.cpp" />
     <ClCompile Include="program\Scene\EndingScene\EndingScene.cpp" />
     <ClCompile Include="program\GameLoop\GameLoop.cpp" />
     <ClCompile Include="program\GameMain.cpp" />
@@ -131,6 +135,11 @@
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program\Item\ItemBase.h" />
+    <ClInclude Include="program\Item\ItemFactory\ItemFactory.h" />
+    <ClInclude Include="program\Item\ItemManager\ItemManager.h" />
+    <ClInclude Include="program\Item\RelicItem\RelicItem.h" />
+    <ClInclude Include="program\Item\WastageItem\WastageItem.h" />
     <ClInclude Include="program\Scene\EndingScene\EndingScene.h" />
     <ClInclude Include="program\GameLoop\GameLoop.h" />
     <ClInclude Include="program\Scene\SceneBase\SceneBase.h" />
