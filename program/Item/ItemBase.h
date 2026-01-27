@@ -18,7 +18,8 @@ enum class ItemType
 	Potion,
 	AttackPowerUp,
 	DefensePowerUp,
-	Relic,
+	Relic_AttackPowerUp,
+	Relic_DefencePowerUp
 };
 
 // アイテム基底
@@ -36,6 +37,7 @@ public:
 	// 引数はItemデータ参照
 
 	// Itemの効果適用(virtual)
-	virtual void ItemEffect() = 0;
+	void ItemEffect(std::unique_ptr < Character > arg_taget);
+
 
 };

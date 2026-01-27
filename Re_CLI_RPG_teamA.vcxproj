@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="program\Item\ItemBase.cpp" />
     <ClCompile Include="program\Item\ItemFactory\ItemFactory.cpp" />
     <ClCompile Include="program\Item\ItemManager\ItemManager.cpp" />
     <ClCompile Include="program\Item\RelicItem\RelicItem.cpp" />
