@@ -1,4 +1,6 @@
 #include "GameLoop.h"
+#include "../System/TextView/TextView.h"
+#include "../SceneManager/SceneManager.h"
 #include <iostream>
 
 void GameLoop::Run()
@@ -16,22 +18,26 @@ void GameLoop::Run()
 
 void GameLoop::Init()
 {
-	std::cout << "Game Init" << std::endl;
+	TextView::Instance().AddText("Game Init");
+	SceneManager::Instance().Init();
 }
 
 void GameLoop::Update()
 {
-	std::cout << "Game Update" << std::endl;
+	TextView::Instance().AddText("Game Update");
+	SceneManager::Instance().Update();
 
 	std::cin.get();
 }
 
 void GameLoop::Render()
 {
-	std::cout << "Game Render" << std::endl;
+	TextView::Instance().AddText("Game Render");
+	SceneManager::Instance().Render();
 }
 
 void GameLoop::End()
 {
-	std::cout << "Game End" << std::endl;
+	TextView::Instance().AddText("Game End");
+
 }

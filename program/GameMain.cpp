@@ -2,7 +2,7 @@
 
 int main()
 {
-	GameLoop::GetInstance().Run();
+	GameLoop::Instance().Run();
 
 	return 0;
 }
