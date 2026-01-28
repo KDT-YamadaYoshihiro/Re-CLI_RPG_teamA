@@ -2,6 +2,7 @@
 const std::unordered_map<std::string, EnemyData>
 EnemyDataBase::data =
 {
+  //{"nameID",{"name",MaxHP,ATK,DEF,INT,MND,speed,dropGold}},
 	{"nameID",{"name",50,10,5,0,5,100,500}},
 	{"b",{"b",50,10,5,0,5,100,500}},
 	{"c",{"c",50,10,5,0,5,100,500}},

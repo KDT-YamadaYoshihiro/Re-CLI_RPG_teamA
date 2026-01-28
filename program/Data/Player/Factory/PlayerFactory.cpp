@@ -23,8 +23,6 @@ PlayerFactory::CreatePlayer(const std::string& playerID)
 
 
 	return std::make_unique<Character>(
-		data.name,
-		//Faction::Playe,
 		sta
 	);
 }

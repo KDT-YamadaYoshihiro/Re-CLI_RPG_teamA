@@ -69,4 +69,14 @@ public:
 			state.hp = state.MaxHP;
 		}
 	}
+
+	void BuffAttackPower(int value) 
+	{
+
+	}
+
+	void BuffDefensePower(int value)
+	{
+
+	}
 };

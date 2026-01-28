@@ -4,6 +4,7 @@
 
 class Character;
 
+// ファクトリクラス
 class PlayerFactory
 {
 public:

@@ -24,8 +24,6 @@ EnemyFactory::CreateEnemy(const std::string& enemyID)
 	
 
 	return std::make_unique<Character>(
-		data.name,
-		Faction::Enemy,
 		sta
 	);
 }
