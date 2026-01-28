@@ -72,11 +72,11 @@ public:
 
 	void BuffAttackPower(int value) 
 	{
-
+		state.ATK += value;
 	}
 
 	void BuffDefensePower(int value)
 	{
-
+		state.DEF += value;
 	}
 };
