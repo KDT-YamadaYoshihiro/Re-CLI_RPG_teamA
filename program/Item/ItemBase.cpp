@@ -1,4 +1,5 @@
 #include "ItemBase.h"
+#include "../Data/Character/CharacterBase.h"
 
 void ItemBase::ItemEffect(std::unique_ptr<Character>& arg_taget)
 {
@@ -7,7 +8,7 @@ void ItemBase::ItemEffect(std::unique_ptr<Character>& arg_taget)
 		case ItemType::Potion:
 		{
 			// HP回復
-			arg_taget->HealHP(static_cast<int>(itemData.power));
+			arg_taget->Heal(static_cast<int>(itemData.power));
 			std::cout << itemData.name << "を使用した。HPが" << static_cast<int>(itemData.power) << "回復した。" << std::endl;
 			break;
 		}

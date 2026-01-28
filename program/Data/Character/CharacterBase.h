@@ -49,8 +49,10 @@ public:
 
 	const Status& GetState()const { return state; }
 
-	bool IsLife() { return state.isLife; }
+	// ¶€”»’èƒQƒbƒ^[
+	const bool IsLife() { return state.isLife; }
 
+	// ‘Ì—ÍŒ¸Zˆ—
 	void TakeDamage(int damage) {
 		if (damage < 0)damage = 0;
 		state.hp -= damage;
@@ -61,6 +63,7 @@ public:
 		}
 	}
 
+	// ‰ñ•œ
 	void Heal(int value)
 	{
 		if (value < 0) { return; }
@@ -68,5 +71,17 @@ public:
 		if (state.hp > state.MaxHP) {
 			state.hp = state.MaxHP;
 		}
+	}
+
+	// UŒ‚—Í‰i‘±ƒoƒt
+	void BuffAttackPower(int value) 
+	{
+		state.ATK += value;
+	}
+
+	// –hŒä—Í‰i‘±ƒoƒt
+	void BuffDefensePower(int value)
+	{
+		state.DEF += value;
 	}
 };
