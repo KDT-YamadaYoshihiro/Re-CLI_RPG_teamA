@@ -145,7 +145,6 @@
     <ClInclude Include="program\Data\Enemy\EnemyDataBase.h" />
     <ClInclude Include="program\Data\Enemy\Factory\EnemyFactory.h" />
     <ClInclude Include="program\Data\Player\Factory\PlayerFactory.h" />
-    <ClInclude Include="program\Data\Player\Factory\ヘッダー.h" />
     <ClInclude Include="program\Data\Player\PlayerData.h" />
     <ClInclude Include="program\Data\Player\PlayerDatavBase.h" />
     <ClInclude Include="program\Item\ItemBase.h" />

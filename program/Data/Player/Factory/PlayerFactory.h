@@ -4,7 +4,7 @@
 
 class Character;
 
-class EnemyFactory
+class PlayerFactory
 {
 public:
 	std::unique_ptr<Character>
