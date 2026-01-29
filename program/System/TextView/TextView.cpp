@@ -1,25 +1,44 @@
 #include "TextView.h"
+#include <iostream>
+#include <cstdlib>
 
-
-void TextView::AddText(std::string arg_text)
+void TextView::Add(const std::string& text)
 {
-	if (m_text == arg_text) {
-		return;
-	}
-	m_text = arg_text;
-	viewFlag = true;
+    m_views.push_back(text);
 }
 
-void TextView::ResetText()
+void TextView::RenderFrame()
 {
-	m_text.clear();
-	system("cls");
+    // 前フレームと完全一致なら何もしない
+    if (m_views == m_lastViews)
+    {
+        m_views.clear();
+        return;
+    }
+
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    for (const auto& line : m_views)
+    {
+        std::cout << line << std::endl;
+    }
+
+    m_lastViews = m_views;
+    m_views.clear();
 }
 
-void TextView::TextRender()
+void TextView::Reset()
 {
-	if (viewFlag) {
-		std::cout << m_text << std::endl;
-		viewFlag = false;
-	}
+    m_views.clear();
+    m_lastViews.clear();
+
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
