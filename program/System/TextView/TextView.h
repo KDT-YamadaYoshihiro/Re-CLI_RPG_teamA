@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#ifdef _WIN32
 #include <Windows.h>
+#endif // _WIN32
+
 #include "../../Singleton/Singleton.h"
 
 class TextView : public Singleton<TextView>
@@ -13,10 +16,6 @@ class TextView : public Singleton<TextView>
 	TextView() = default;
 	virtual ~TextView() = default;
 
-	/// <summary>
-	/// コンソールハンドル
-	/// </summary>
-	HANDLE m_console;
 
 	/// <summary>
 	/// 表示用テキスト一覧
@@ -27,10 +26,6 @@ class TextView : public Singleton<TextView>
 	/// </summary>
 	std::vector<std::string> m_lastViews;
 
-	/// <summary>
-	/// 文字列表示Flag
-	/// </summary>
-	bool isDirty = true;
 
 public:
 
