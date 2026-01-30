@@ -1,6 +1,11 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#ifdef _WIN32
+#include <Windows.h>
+#endif // _WIN32
+
 #include "../../Singleton/Singleton.h"
 
 class TextView : public Singleton<TextView>
@@ -11,22 +16,27 @@ class TextView : public Singleton<TextView>
 	TextView() = default;
 	virtual ~TextView() = default;
 
+
+	/// <summary>
+	/// 表示用テキスト一覧
+	/// </summary>
+	std::vector<std::string> m_views;
+	/// <summary>
+	/// 表示履歴一覧
+	/// </summary>
+	std::vector<std::string> m_lastViews;
+
+
 public:
 
-	// テキスト内容の追加
-	void AddText(std::string arg_text);
-
-	// テキスト内容の削除
-	void ResetText();
-
-	// テキスト内容の表示
-	void TextRender();
+	// 表示内容の追加
+	void Add(const std::string& arg_text);
 
 
-private:
+	// 表示内容の表示
+	void RenderFrame();
 
-	// 表示するテキスト
-	std::string m_text;
-
+	// 表示内容のリセット
+	void Reset();
 };
 
