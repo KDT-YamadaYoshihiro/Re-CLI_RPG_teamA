@@ -5,6 +5,7 @@
 // アイテムの種類
 enum class ItemType
 {
+	Gold,					// お金
 	Potion,					// 回復アイテム
 	AttackPowerUp,			// 攻撃力強化薬
 	DefensePowerUp,			// 防御力強化薬

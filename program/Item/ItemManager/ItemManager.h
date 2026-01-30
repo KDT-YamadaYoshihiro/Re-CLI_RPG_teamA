@@ -42,5 +42,24 @@ public:
 	/// <returns></returns>
 	const std::unordered_map<int, ItemStack>& GetAllItems();
 
+	/// <summary>
+	/// ‚¨‹à‚Ìæ“¾
+	/// </summary>
+	/// <returns></returns>
+	int GetGold() const;
+
+	/// <summary>
+	/// ‚¨‹à‚ÌÁ”ï
+	/// </summary>
+	/// <param name="amount"></param>
+	/// <returns></returns>
+	bool ConsumeGold(int amount);
+
+	/// <summary>
+	/// ‚¨‹à‚Ìæ“¾
+	/// </summary>
+	/// <param name="amount"></param>
+	void AddGold(int amount);
+
 };
 

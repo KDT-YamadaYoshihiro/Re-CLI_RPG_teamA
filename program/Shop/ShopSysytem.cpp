@@ -1,0 +1,154 @@
+#include "ShopSysytem.h"
+
+ShopSystem::ShopSystem(Character& player, ItemManager& itemManager)
+    : m_player(player), m_itemManager(itemManager)
+{
+    GenerateSlots();
+}
+
+void ShopSystem::Update()
+{
+    while (!m_exit)
+    {
+        Render();
+        UpdateInput();
+    }
+}
+
+
+void ShopSystem::GenerateSlots()
+{
+    m_slots.clear();
+
+    const auto& table = ItemFactory::Instance().GetItemDataTable();
+
+    // 抽選候補
+    std::vector<ItemData> pool;
+    for (const auto& pair : table)
+    {
+        const ItemData& data = pair.second;
+
+        // 遺物で禁止されているものは除外
+        if (!data.consumables && m_bannedRelics.count(data.id))
+        {
+            continue;
+        }
+
+        pool.push_back(data);
+    }
+
+    srand((unsigned int)time(nullptr));
+
+    while (m_slots.size() < 5 && !pool.empty())
+    {
+        int index = rand() % pool.size();
+        const ItemData& data = pool[index];
+
+        // ラインナップ内で遺物重複防止
+        bool duplicate = false;
+        if (!data.consumables)
+        {
+            for (const auto& s : m_slots)
+            {
+                if (s.data.id == data.id)
+                {
+                    duplicate = true;
+                    break;
+                }
+            }
+        }
+
+        if (duplicate)
+        {
+            continue;
+        }
+
+
+        ShopSlot slot;
+        slot.data = data;
+        slot.sold = false;
+        m_slots.push_back(slot);
+    }
+}
+
+void ShopSystem::Render()
+{
+    TextView::Instance().Reset();
+
+    TextView::Instance().Add("=== ショップ ===\n");
+    TextView::Instance().Add("所持金：" + std::to_string(m_itemManager.GetGold()) + " G\n\n");
+    
+    for (int i = 0; i < m_slots.size(); ++i)
+    {
+        const auto& slot = m_slots[i];
+
+        std::string line;
+        line += (i == m_cursor ? "> " : "  ");
+        line += slot.data.name;
+
+        if (slot.sold)
+        {
+            line += " [SOLD]";
+        }
+
+        line += "\n";
+        TextView::Instance().Add(line);
+    }
+
+    TextView::Instance().Add("\n↑↓ 選択  Enter 購入  ESC 退出\n");
+    TextView::Instance().RenderFrame();
+}
+
+void ShopSystem::UpdateInput()
+{
+    KeyInput::Instance().Update();
+
+    if (KeyInput::Instance().ChechKey(KeyInput::UP))
+    {
+        m_cursor = (m_cursor - 1 + m_slots.size()) % m_slots.size();
+    }
+    else if (KeyInput::Instance().ChechKey(KeyInput::DOWN))
+    {
+        m_cursor = (m_cursor + 1) % m_slots.size();
+    }
+    else if (KeyInput::Instance().ChechKey(KeyInput::ENTER))
+    {
+        BuyCurrent();
+    }
+    else if (KeyInput::Instance().ChechKey(KeyInput::ESC))
+    {
+        m_exit = true;
+    }
+}
+
+void ShopSystem::BuyCurrent()
+{
+    auto& slot = m_slots[m_cursor];
+
+    if (slot.sold)
+    {
+        TextView::Instance().Add("すでに購入済みです。\n");
+        return;
+    }
+
+    int price = slot.data.price;
+
+    // ゴールドチェック＆消費
+    if (!m_itemManager.ConsumeGold(price))
+    {
+        TextView::Instance().Add("ゴールドが足りない！\n");
+        return;
+    }
+
+    // アイテム付与
+    m_itemManager.AddItem(slot.data.id, m_player);
+    slot.sold = true;
+
+    // 遺物は永久排除
+    if (!slot.data.consumables)
+    {
+        m_bannedRelics.insert(slot.data.id);
+    }
+
+    TextView::Instance().Add(slot.data.name + "を購入した。\n""残りゴールド：" + std::to_string(m_itemManager.GetGold()) + " G\n");
+}
