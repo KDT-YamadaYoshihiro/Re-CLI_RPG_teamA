@@ -18,6 +18,7 @@ struct ItemData
 	std::string name;		// 名前
 	ItemType type;
 	int id;					// Item
+	int price;				// 売買価格
 	int power;			// 使用時または所持時の効果量
 	bool consumables;		// 消耗品か  true or false
 };
@@ -26,22 +27,24 @@ class Character; // 前方宣言
 // アイテム基底
 class ItemBase
 {
-	// 保持データ
 protected:
-
-	// データの保持
 	ItemData itemData;
 
 public:
-	
-	// 仮想デストラクタ
 	virtual ~ItemBase() = default;
-	// コンストラクタ・初期化
-	ItemBase(const ItemData& arg_data) : itemData(arg_data) {};
-	// 引数はItemデータ参照
 
-	// Itemの効果適用(virtual)-
-	void ItemEffect(std::unique_ptr<Character>& arg_taget);
+	ItemBase(const ItemData& data)
+		: itemData(data) {
+	}
 
+	const ItemData& GetData() const { return itemData; }
 
+	// 使用時（消費アイテム用）
+	virtual void Apply(Character& target) {}
+
+	// 所持時（遺物用）
+	virtual void OnAcquire(Character& target) {}
+	virtual void OnRemove(Character& target) {}
+
+	bool IsConsumable() const { return itemData.consumables; }
 };

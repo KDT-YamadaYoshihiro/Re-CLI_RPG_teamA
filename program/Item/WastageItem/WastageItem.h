@@ -11,8 +11,8 @@ private:
 
 public:
 
-	// コンストラクタ・初期化
-	WastageItem(const ItemData& arg_data) : ItemBase(arg_data) {};
+	WastageItem(const ItemData& data);
 
+	void Apply(Character& target) override;
 };
 

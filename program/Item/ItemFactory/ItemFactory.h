@@ -15,6 +15,7 @@ enum class ItemIdType
 	Relic_DefencePowerUp	// 遺物：防御力の護符
 };
 
+class WastageItem; // 前方宣言
 // アイテム生成クラス
 class ItemFactory : public Singleton<ItemFactory>
 {
@@ -29,21 +30,19 @@ public:
 	template<typename T>
 	std::shared_ptr<ItemBase> CreateItem(int itemID)
 	{
-		// アイテムデータテーブルから該当IDのデータを探す
 		auto it = m_itemDataTable.find(itemID);
-		// 見つかったら該当データでアイテム生成、見つからなかったらnullptrを返す
-		if (it != m_itemDataTable.end())
+		if (it == m_itemDataTable.end())
+			return nullptr;
+
+		const ItemData& data = it->second;
+
+		if (data.consumables)
 		{
-			// アイテム生成
-			return std::make_shared<T>(it->second);
+			return std::make_shared<WastageItem>(data);
 		}
-		// 見つからなかった場合
 		else
 		{
-			// エラーメッセージ出力
-			std::cerr << "指定されたIDが存在しませんでした" << itemID << std::endl;
-			// nullptrを返す
-			return nullptr;
+			return std::make_shared<RelicItem>(data);
 		}
 	}
 };
