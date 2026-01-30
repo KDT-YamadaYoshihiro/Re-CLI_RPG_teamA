@@ -1,8 +1,9 @@
 #include "ItemFactory.h"
 #include "../../Item/ItemBase.h"
 
-#include "ItemFactory.h"
-#include "../../Item/ItemBase.h"
+#include "../RelicItem/RelicItem.h"
+#include "../WastageItem/WastageItem.h"
+
 
 void ItemFactory::OnCreate()
 {
@@ -20,8 +21,7 @@ void ItemFactory::OnCreate()
     m_itemDataTable.emplace(static_cast<int>(ItemIdType::Relic_DefencePowerUp), ItemData{ "à‚ï®ÅFñhå‰óÕÇÃåÏïÑ", ItemType::Relic_DefencePowerUp, static_cast<int>(ItemIdType::Relic_DefencePowerUp), 15, false });
 }
 
-template<typename T>
-std::shared_ptr<T> ItemFactory::CreateItem(int itemID)
+std::shared_ptr<ItemBase> ItemFactory::CreateItem(int itemID)
 {
     auto it = m_itemDataTable.find(itemID);
     if (it == m_itemDataTable.end())

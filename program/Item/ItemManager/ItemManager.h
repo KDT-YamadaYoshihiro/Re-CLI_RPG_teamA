@@ -18,10 +18,29 @@ class ItemManager
 private:
 
 	// Item所持管理をunordered_mapで行う
-	std::unordered_map<int, std::shared_ptr<ItemBase>> m_itemMap;
+	std::unordered_map<int, ItemStack> m_items;
 
 public:
+
+	/// <summary>
+	/// アイテムの追加
+	/// </summary>
+	/// <param name="itemID"></param>
+	/// <param name="owner"></param>
 	void AddItem(int itemID, Character& owner);
+
+	/// <summary>
+	/// アイテムの使用
+	/// </summary>
+	/// <param name="itemID"></param>
+	/// <param name="target"></param>
 	void UseItem(int itemID, Character& target);
+
+	/// <summary>
+	/// 所持しているアイテムすべて
+	/// </summary>
+	/// <returns></returns>
+	const std::unordered_map<int, ItemStack>& GetAllItems();
+
 };
 

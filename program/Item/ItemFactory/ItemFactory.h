@@ -28,8 +28,9 @@ class ItemFactory : public Singleton<ItemFactory>
     //　ステータスデータの設定
     void OnCreate();
 public:
+
     // 指定されたIDよりアイテムを生成
-    template<typename T>
-    std::shared_ptr<T> CreateItem(int itemID);
+    std::shared_ptr<ItemBase> CreateItem(int itemID);
 
 };
+

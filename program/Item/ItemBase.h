@@ -37,14 +37,23 @@ public:
 		: itemData(data) {
 	}
 
-	const ItemData& GetData() const { return itemData; }
 
 	// 使用時（消費アイテム用）
-	virtual void Apply(Character& target) {}
+	virtual void Apply(Character& target) = 0;
 
 	// 所持時（遺物用）
-	virtual void OnAcquire(Character& target) {}
-	virtual void OnRemove(Character& target) {}
+	virtual void OnAcquire(Character& target) = 0;
+	virtual void OnRemove(Character & target) = 0;
 
+	/// <summary>
+	/// データの取得
+	/// </summary>
+	/// <returns></returns>
+	const ItemData& GetData() const { return itemData; }
+
+	/// <summary>
+	/// 消費型かの判定
+	/// </summary>
+	/// <returns></returns>
 	bool IsConsumable() const { return itemData.consumables; }
 };
