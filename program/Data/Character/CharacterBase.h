@@ -14,9 +14,7 @@ struct Status {
 	bool isLife = true;
 
 	int ID;
-	int Lv = 1;
-	int Exp = 0;
-	int MaxHP;
+	int MaxHP=1;
 	int hp = MaxHP;
 
 	int ATK;
@@ -50,7 +48,7 @@ public:
 	const Status& GetState()const { return state; }
 
 	// ¶€”»’èƒQƒbƒ^[
-	const bool IsLife() { return state.isLife; }
+	const bool IsLife()const { return state.isLife; }
 
 	// ‘Ì—ÍŒ¸Zˆ—
 	void TakeDamage(int damage) {
