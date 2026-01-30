@@ -14,5 +14,9 @@ public:
 	WastageItem(const ItemData& data);
 
 	void Apply(Character& target) override;
+
+	void OnAcquire(Character& target)override {};
+	void OnRemove(Character& target)override {};
+
 };
 
