@@ -5,12 +5,12 @@
 #include <memory>
 #include "../ItemBase.h"
 
-/*
-* 
-* #include ""	消耗Item
-* #include ""	遺物
-*
-*/
+// アイテムスタック構造体
+struct ItemStack
+{
+	std::shared_ptr<ItemBase> item;
+	int count = 0;
+};
 
 // 所持アイテム管理
 class ItemManager
@@ -18,15 +18,29 @@ class ItemManager
 private:
 
 	// Item所持管理をunordered_mapで行う
-	std::unordered_map<int, std::shared_ptr<ItemBase>> m_itemMap;
+	std::unordered_map<int, ItemStack> m_items;
 
 public:
 
-	// Itemの破棄（使用）
-	void UseItem(int itemID);
-	// 全所持Item情報の取得（*n単位表示で）
-	void GetAllItemInfo();
-	// 指定Item情報の取得
-	std::shared_ptr<ItemBase> GetItemInfo(int itemID);	//　参照渡し（itemBaseのポインタ）
+	/// <summary>
+	/// アイテムの追加
+	/// </summary>
+	/// <param name="itemID"></param>
+	/// <param name="owner"></param>
+	void AddItem(int itemID, Character& owner);
+
+	/// <summary>
+	/// アイテムの使用
+	/// </summary>
+	/// <param name="itemID"></param>
+	/// <param name="target"></param>
+	void UseItem(int itemID, Character& target);
+
+	/// <summary>
+	/// 所持しているアイテムすべて
+	/// </summary>
+	/// <returns></returns>
+	const std::unordered_map<int, ItemStack>& GetAllItems();
+
 };
 
