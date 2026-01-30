@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="program\Data\Enemy\EnemyDataBase.cpp" />
     <ClCompile Include="program\Data\Enemy\Factory\EnemyFactory.cpp" />
+    <ClCompile Include="program\Data\Party\PartyMG.cpp" />
     <ClCompile Include="program\Data\Player\Factory\PlayerFactory.cpp" />
     <ClCompile Include="program\Data\Player\PlayerDataBase.cpp" />
     <ClCompile Include="program\Item\ItemBase.cpp" />
@@ -144,9 +145,10 @@
     <ClInclude Include="program\Data\Enemy\EnemyData.h" />
     <ClInclude Include="program\Data\Enemy\EnemyDataBase.h" />
     <ClInclude Include="program\Data\Enemy\Factory\EnemyFactory.h" />
+    <ClInclude Include="program\Data\Party\PartyMG.h" />
     <ClInclude Include="program\Data\Player\Factory\PlayerFactory.h" />
     <ClInclude Include="program\Data\Player\PlayerData.h" />
-    <ClInclude Include="program\Data\Player\PlayerDatavBase.h" />
+    <ClInclude Include="program\Data\Player\PlayerDataBase.h" />
     <ClInclude Include="program\Item\ItemBase.h" />
     <ClInclude Include="program\Item\ItemFactory\ItemFactory.h" />
     <ClInclude Include="program\Item\ItemManager\ItemManager.h" />

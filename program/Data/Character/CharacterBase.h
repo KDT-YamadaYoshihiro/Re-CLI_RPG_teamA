@@ -16,7 +16,7 @@ struct Status {
 	int ID;
 	int Lv = 1;
 	int Exp = 0;
-	int MaxHP = 50;
+	int MaxHP;
 	int hp = MaxHP;
 
 	int ATK;
@@ -24,9 +24,9 @@ struct Status {
 	int INT;
 	int MND;
 
-	int actionPoint;
+	int actionPoint=0;
 	int speed;
-	int actionValue;
+	int actionValue=0;
 };
 
 

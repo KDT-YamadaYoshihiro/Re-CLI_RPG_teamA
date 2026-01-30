@@ -1,6 +1,6 @@
 #include "PlayerFactory.h"
 #include "../../Character/CharacterBase.h"
-#include "../PlayerDatavBase.h"
+#include "../PlayerDataBase.h"
 
 std::unique_ptr<Character>
 PlayerFactory::CreatePlayer(const std::string& playerID)
