@@ -28,7 +28,7 @@ class ItemFactory : public Singleton<ItemFactory>
 public:
 	// 指定されたIDよりアイテムを生成
 	template<typename T>
-	std::shared_ptr<ItemBase> CreateItem(int itemID)
+	std::shared_ptr<ItemBase> ItemFactory::CreateItem(int itemID)
 	{
 		auto it = m_itemDataTable.find(itemID);
 		if (it == m_itemDataTable.end())
