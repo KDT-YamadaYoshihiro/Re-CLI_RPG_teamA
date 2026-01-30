@@ -20,7 +20,8 @@ void ItemFactory::OnCreate()
     m_itemDataTable.emplace(static_cast<int>(ItemIdType::Relic_DefencePowerUp), ItemData{ "à‚ï®ÅFñhå‰óÕÇÃåÏïÑ", ItemType::Relic_DefencePowerUp, static_cast<int>(ItemIdType::Relic_DefencePowerUp), 15, false });
 }
 
-std::shared_ptr<ItemBase> ItemFactory::CreareItem(int itemID)
+template<typename T>
+std::shared_ptr<T> ItemFactory::CreateItem(int itemID)
 {
     auto it = m_itemDataTable.find(itemID);
     if (it == m_itemDataTable.end())

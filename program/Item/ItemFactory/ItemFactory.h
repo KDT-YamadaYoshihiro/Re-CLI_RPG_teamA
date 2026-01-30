@@ -29,6 +29,7 @@ class ItemFactory : public Singleton<ItemFactory>
     void OnCreate();
 public:
     // 指定されたIDよりアイテムを生成
-    std::shared_ptr<ItemBase> CreateItem(int itemID)
+    template<typename T>
+    std::shared_ptr<T> CreateItem(int itemID);
 
 };
