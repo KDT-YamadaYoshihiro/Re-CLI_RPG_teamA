@@ -89,6 +89,12 @@ int ItemManager::GetGold() const
 
 bool ItemManager::ConsumeGold(int amount)
 {
+
+    if (amount <= 0)
+    {
+        return false;
+    }
+
     int goldId = static_cast<int>(ItemIdType::Gold);
     auto it = m_items.find(goldId);
 
@@ -114,13 +120,23 @@ bool ItemManager::ConsumeGold(int amount)
 
 void ItemManager::AddGold(int amount)
 {
-    int goldId = static_cast<int>(ItemIdType::Gold);
+    if (amount <= 0)
+    {
+        return;
+    }
 
-    auto item = ItemFactory::Instance().CreateItem(goldId);
+    int goldId = static_cast<int>(ItemIdType::Gold);
     auto& stack = m_items[goldId];
 
     if (stack.count == 0)
-        stack.item = item;
+    {
+       auto item = ItemFactory::Instance().CreateItem(goldId);
+       if (!item)
+       {
+           return;
+       }
 
+        stack.item = item;
+    }
     stack.count += amount;
 }

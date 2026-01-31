@@ -10,7 +10,7 @@ void ItemFactory::OnCreate()
     //　アイテムデータテーブルの初期化
     // 名前、タイプ、ID、効果量、消耗品か否か
     // お金
-    m_itemDataTable.emplace(static_cast<int>(ItemType::Gold), 0, 1, true);
+    m_itemDataTable.emplace(static_cast<int>(ItemType::Gold), ItemData{ "ゴールド", ItemType::Gold, static_cast<int>(ItemIdType::Gold), 1, true });
     // ポーション系
     m_itemDataTable.emplace(static_cast<int>(ItemIdType::LowerPotion), ItemData{ "低級ポーション", ItemType::Potion, static_cast<int>(ItemIdType::LowerPotion), 20, true });
     m_itemDataTable.emplace(static_cast<int>(ItemIdType::IntermediatePotion), ItemData{ "中級ポーション", ItemType::Potion, static_cast<int>(ItemIdType::IntermediatePotion), 100, true });

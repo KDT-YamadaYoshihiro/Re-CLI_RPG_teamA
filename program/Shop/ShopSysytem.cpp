@@ -60,6 +60,7 @@ void ShopSystem::GenerateSlots()
 
         if (duplicate)
         {
+            pool.erase(pool.begin() + index);
             continue;
         }
 
@@ -68,6 +69,13 @@ void ShopSystem::GenerateSlots()
         slot.data = data;
         slot.sold = false;
         m_slots.push_back(slot);
+
+        // à‚ï®ÇÕàÍà”Ç…Ç∑ÇÈÇΩÇﬂíäëIëŒè€Ç©ÇÁäOÇ∑
+        if (!data.consumables)
+        {
+            pool.erase(pool.begin() + index);
+        }
+
     }
 }
 
@@ -103,13 +111,24 @@ void ShopSystem::UpdateInput()
 {
     KeyInput::Instance().Update();
 
+    const int slotCount = static_cast<int>(m_slots.size());
+    if (slotCount == 0)
+    {
+        if (KeyInput::Instance().ChechKey(KeyInput::ESC))
+        {
+            m_exit = true;
+        }
+
+        return;
+    }
+
     if (KeyInput::Instance().ChechKey(KeyInput::UP))
     {
-        m_cursor = (m_cursor - 1 + m_slots.size()) % m_slots.size();
+        m_cursor = (m_cursor - 1 + slotCount) % slotCount;
     }
     else if (KeyInput::Instance().ChechKey(KeyInput::DOWN))
     {
-        m_cursor = (m_cursor + 1) % m_slots.size();
+        m_cursor = (m_cursor + 1) % slotCount;
     }
     else if (KeyInput::Instance().ChechKey(KeyInput::ENTER))
     {
