@@ -1,9 +1,12 @@
 #pragma once
 #include <conio.h>
+#include "../../Singleton/Singleton.h"
 
 class KeyInput : public Singleton<KeyInput>
 {
 	friend class Singleton<KeyInput>;
+
+	template <typename U> friend class Singleton;
 
 	KeyInput() = default;
 	virtual ~KeyInput() = default;

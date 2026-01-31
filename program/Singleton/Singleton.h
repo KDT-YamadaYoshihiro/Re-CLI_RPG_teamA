@@ -22,3 +22,4 @@ protected:  // 継承先でも使えるようにprotected:
     // 仮想デストラクタ
     virtual ~Singleton() = default;
 };
+
