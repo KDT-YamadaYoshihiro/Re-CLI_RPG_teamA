@@ -144,9 +144,10 @@ void ShopSystem::BuyCurrent()
 {
     auto& slot = m_slots[m_cursor];
 
-    if (slot.sold)
+    // ŠùŠ‚Ìˆâ•¨‚Íw“ü•s‰Â
+    if (!slot.data.consumables && m_itemManager.GetAllItems().count(slot.data.id) > 0)
     {
-        TextView::Instance().Add("‚·‚Å‚Éw“üÏ‚İ‚Å‚·B\n");
+        TextView::Instance().Add("‚»‚Ìˆâ•¨‚ÍŠù‚ÉŠ‚µ‚Ä‚¢‚Ü‚·B\n");
         return;
     }
 
