@@ -139,6 +139,7 @@
     <ClCompile Include="program\SceneManager\SceneManager.cpp" />
     <ClCompile Include="program\Scene\InGameScene\InGameScene.cpp" />
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="program\Shop\ShopSysytem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="program\Data\Enemy\EnemyData.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="program\Scene\InGameScene\InGameScene.h" />
     <ClInclude Include="program\Scene\TitleScene\TitleScene.h" />
     <ClInclude Include="program\Singleton\Singleton.h" />
+    <ClInclude Include="program\Shop\ShopSysytem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,6 +5,7 @@
 // アイテムの種類
 enum class ItemType
 {
+	Gold,					// お金
 	Potion,					// 回復アイテム
 	AttackPowerUp,			// 攻撃力強化薬
 	DefensePowerUp,			// 防御力強化薬
@@ -16,10 +17,10 @@ enum class ItemType
 struct ItemData
 {
 	std::string name;		// 名前
-	ItemType type;
+	ItemType type;			// 種類
 	int id;					// Item
 	int price;				// 売買価格
-	int power;			// 使用時または所持時の効果量
+	int power;				// 使用時または所持時の効果量
 	bool consumables;		// 消耗品か  true or false
 };
 

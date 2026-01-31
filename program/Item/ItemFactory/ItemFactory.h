@@ -6,6 +6,7 @@
 // アイテムIDの種類
 enum class ItemIdType
 {
+    Gold = 0,               // お金
     LowerPotion,            // 低級ポーション
     IntermediatePotion,     // 中級ポーション
     HighPotion,             // 上級ポーション
@@ -31,6 +32,12 @@ public:
 
     // 指定されたIDよりアイテムを生成
     std::shared_ptr<ItemBase> CreateItem(int itemID);
+
+    /// <summary>
+    /// すべてのデータ取得
+    /// </summary>
+    /// <returns></returns>
+    const std::unordered_map<int, ItemData>& GetItemDataTable() const;
 
 };
 

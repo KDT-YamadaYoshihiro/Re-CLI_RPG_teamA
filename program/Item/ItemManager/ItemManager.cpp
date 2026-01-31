@@ -73,3 +73,70 @@ const std::unordered_map<int, ItemStack>& ItemManager::GetAllItems()
 {
 	return m_items;
 }
+
+int ItemManager::GetGold() const
+{
+
+    int goldId = static_cast<int>(ItemIdType::Gold);
+    auto it = m_items.find(goldId);
+    if (it == m_items.end())
+    {
+        return 0;
+    }
+
+    return it->second.count;
+}
+
+bool ItemManager::ConsumeGold(int amount)
+{
+
+    if (amount <= 0)
+    {
+        return false;
+    }
+
+    int goldId = static_cast<int>(ItemIdType::Gold);
+    auto it = m_items.find(goldId);
+
+    if (it == m_items.end())
+    {
+        return false;
+    }
+
+    if (it->second.count < amount)
+    {
+        return false;
+    }
+
+    it->second.count -= amount;
+
+    if (it->second.count <= 0)
+    {
+        m_items.erase(it);
+    }
+
+    return true;
+}
+
+void ItemManager::AddGold(int amount)
+{
+    if (amount <= 0)
+    {
+        return;
+    }
+
+    int goldId = static_cast<int>(ItemIdType::Gold);
+    auto& stack = m_items[goldId];
+
+    if (stack.count == 0)
+    {
+       auto item = ItemFactory::Instance().CreateItem(goldId);
+       if (!item)
+       {
+           return;
+       }
+
+        stack.item = item;
+    }
+    stack.count += amount;
+}
