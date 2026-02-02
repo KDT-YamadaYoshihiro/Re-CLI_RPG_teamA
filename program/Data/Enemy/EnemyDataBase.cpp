@@ -19,7 +19,7 @@ const EnemyData& EnemyDataBase::Get(const std::string& id)
 	auto it = data.find(id);
 	if (it == data.end()) {
 		// エラーログを出してデフォルトデータを返す、あるいはアサーション
-		throw std::runtime_error("Unknown Player ID: " + id);
+		throw std::runtime_error("Unknown Enemy ID: " + id);
 	}
 	return it->second;
 }
