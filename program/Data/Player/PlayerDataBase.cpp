@@ -1,5 +1,6 @@
 #include "PlayerDataBase.h"
 #include <iostream>
+#include <stdexcept>
 
 const std::unordered_map<std::string, PlayerData>
 // プライヤーキャラデータ

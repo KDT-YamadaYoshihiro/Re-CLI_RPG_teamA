@@ -1,5 +1,6 @@
 #include "EnemyDataBase.h"
 #include <iostream>
+#include <stdexcept>
 
 const std::unordered_map<std::string, EnemyData>
 // 敵のデータ置き場
