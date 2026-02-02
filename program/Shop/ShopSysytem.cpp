@@ -8,11 +8,14 @@ ShopSystem::ShopSystem(Character& player, ItemManager& itemManager)
 
 void ShopSystem::Update()
 {
-    while (!m_exit)
-    {
-        Render();
-        UpdateInput();
-    }
+    Render();
+    UpdateInput();
+   
+}
+
+bool ShopSystem::IsExit()
+{
+    return m_exit;
 }
 
 
@@ -81,7 +84,6 @@ void ShopSystem::GenerateSlots()
 
 void ShopSystem::Render()
 {
-    TextView::Instance().Reset();
 
     TextView::Instance().Add("=== ショップ ===\n");
     TextView::Instance().Add("所持金：" + std::to_string(m_itemManager.GetGold()) + " G\n\n");
@@ -104,7 +106,6 @@ void ShopSystem::Render()
     }
 
     TextView::Instance().Add("\n↑↓ 選択  Enter 購入  ESC 退出\n");
-    TextView::Instance().RenderFrame();
 }
 
 void ShopSystem::UpdateInput()

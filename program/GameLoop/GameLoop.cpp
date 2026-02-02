@@ -1,7 +1,7 @@
 #include "GameLoop.h"
-#include "../System/TextView/TextView.h"
-#include "../SceneManager/SceneManager.h"
-#include "../System/KeyInput/KeyInput.h"
+#include "System/TextView/TextView.h"
+#include "SceneManager/SceneManager.h"
+#include "System/KeyInput/KeyInput.h"
 #include <iostream>
 
 void GameLoop::Run()
@@ -31,7 +31,6 @@ void GameLoop::Update()
 void GameLoop::Render()
 {
 	SceneManager::Instance().Render();
-	TextView::Instance().RenderFrame();
 }
 
 void GameLoop::End()

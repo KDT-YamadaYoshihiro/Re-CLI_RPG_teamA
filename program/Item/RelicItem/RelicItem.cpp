@@ -1,6 +1,6 @@
 #include "RelicItem.h"
-#include "../../Data/Character/CharacterBase.h"
-#include "../../System/TextView/TextView.h"
+#include "Data/Character/CharacterBase.h"
+#include "System/TextView/TextView.h"
 
 void RelicItem::OnAcquire(Character& target)
 {

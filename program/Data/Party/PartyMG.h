@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../Character/CharacterBase.h"
+#include "Data/Character/CharacterBase.h"
 
 #define PARTY_MAX 4
 

@@ -3,7 +3,7 @@
 
 SceneManager::SceneManager()
 {
-    //ChangeScene<TitleScene>();
+    ChangeScene<TitleScene>();
 }
 
 SceneManager::~SceneManager()

@@ -6,7 +6,6 @@ enum class SceneType
 {
 	BATTLE,
 	SHOP,
-	EVENT,
 	BOSS,
 	NONE,
 };
@@ -19,8 +18,17 @@ struct FloorChoice
 
 class Map
 {
-public:
 
+private:
+
+	/// <summary>
+	/// ƒ_ƒ“ƒWƒ‡ƒ““¥”j”»’è
+	/// </summary>
+	bool m_isCleared = false;
+
+
+public:
+	
 	/// <summary>
 	/// î•ñ‚ğo—Í
 	/// </summary>
@@ -36,6 +44,8 @@ public:
 	/// </summary>
 	/// <returns>Ÿ‚ÌƒV[ƒ“‚Ìƒ^ƒCƒv</returns>
 	SceneType ReturnScene(int select);
+
+	bool GetIsCleared() const { return m_isCleared; }
 
 private:
 	/// <summary>
@@ -55,13 +65,13 @@ private:
 	std::array<FloorChoice, STAGE_MAX> m_floorTable = { {
 	{ SceneType::BATTLE, SceneType::SHOP },		// 1ŠK
 	{ SceneType::BATTLE, SceneType::BATTLE },	// 2ŠK
-	{ SceneType::BATTLE, SceneType::EVENT },	// 3ŠK
-	{ SceneType::SHOP,   SceneType::EVENT },	// 4ŠK
+	{ SceneType::BATTLE, SceneType::BATTLE },	// 3ŠK
+	{ SceneType::SHOP,   SceneType::BATTLE },	// 4ŠK
 	{ SceneType::BATTLE, SceneType::BATTLE },	// 5ŠK
-	{ SceneType::EVENT,  SceneType::SHOP },		// 6ŠK
-	{ SceneType::BATTLE, SceneType::EVENT },	// 7ŠK
+	{ SceneType::BATTLE,  SceneType::SHOP },	// 6ŠK
+	{ SceneType::BATTLE, SceneType::BATTLE },	// 7ŠK
 	{ SceneType::BATTLE, SceneType::BATTLE },	// 8ŠK
-	{ SceneType::SHOP,   SceneType::EVENT },	// 9ŠK
+	{ SceneType::SHOP,   SceneType::BATTLE },	// 9ŠK
 	{ SceneType::BOSS,   SceneType::BOSS },		// 10ŠK
 }   };
 };

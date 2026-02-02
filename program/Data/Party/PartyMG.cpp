@@ -1,6 +1,6 @@
 #include "PartyMG.h"
-#include "../Player/Factory/PlayerFactory.h"
-#include "../Character/CharacterBase.h"
+#include "Data/Player/Factory/PlayerFactory.h"
+#include "Data/Character/CharacterBase.h"
 
 //void PartyMG::Init() 
 //{

@@ -1,20 +1,25 @@
 #include "EnemyDataBase.h"
+#include <iostream>
+
 const std::unordered_map<std::string, EnemyData>
 // 敵のデータ置き場
 EnemyDataBase::data =
 {
   // 基本形
   //{"nameID",{"name",MaxHP,ATK,DEF,INT,MND,speed,dropGold}},
-	{"nameID",{"name",50,10,5,0,5,100,500}},
-	{"b",{"b",50,10,5,0,5,100,500}},
-	{"c",{"c",50,10,5,0,5,100,500}},
-	{"d",{"d",50,10,5,0,5,100,500}},
-	{"e",{"e",50,10,5,0,5,100,500}},
-	{"f",{"f",50,10,5,0,5,100,500}},
+	{"slime",{"slime",50,10,5,0,5,10}},
+	{"goblin",{"goblin",55,15,8,0,5,30}},
+	{"bat",{"bat",70,20,12,0,8,40}},
+	{"Boss",{"wolf",80,25,15,0,10,55}},
 };
 
 
 const EnemyData& EnemyDataBase::Get(const std::string& id)
 {
-	return data.at(id);
+	auto it = data.find(id);
+	if (it == data.end()) {
+		// エラーログを出してデフォルトデータを返す、あるいはアサーション
+		throw std::runtime_error("Unknown Player ID: " + id);
+	}
+	return it->second;
 }

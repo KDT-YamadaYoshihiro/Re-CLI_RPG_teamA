@@ -47,6 +47,7 @@ public:
 	Faction GetFaction()const { return state.faction; }
 
 	const Status& GetState()const { return state; }
+	void SetActionPoint(int arg_point) { state.actionPoint = arg_point; }
 
 	// ¶€”»’èƒQƒbƒ^[
 	const bool IsLife()const { return state.isLife; }

@@ -1,6 +1,6 @@
 #pragma once
-#include "../ItemBase.h"
-#include "../../Singleton/Singleton.h"
+#include "Item/ItemBase.h"
+#include "Singleton/Singleton.h"
 #include <unordered_map>
 
 // アイテムIDの種類
@@ -8,7 +8,7 @@ enum class ItemIdType
 {
     Gold = 0,               // お金
     LowerPotion,            // 低級ポーション
-    IntermediatePotion,     // 中級ポーション
+    MiddlePotion,     // 中級ポーション
     HighPotion,             // 上級ポーション
     AttackPowerUp,          // 攻撃力強化薬
     DefensePowerUp,         // 防御力強化薬
@@ -26,9 +26,11 @@ class ItemFactory : public Singleton<ItemFactory>
     // データーテーブルを使用してアイテム生成を行うクラス
     std::unordered_map<int, ItemData> m_itemDataTable;
 
+public:
+
     //　ステータスデータの設定
     void OnCreate();
-public:
+
 
     // 指定されたIDよりアイテムを生成
     std::shared_ptr<ItemBase> CreateItem(int itemID);

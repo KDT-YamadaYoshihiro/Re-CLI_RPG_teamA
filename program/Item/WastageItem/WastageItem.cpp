@@ -1,6 +1,6 @@
 #include "WastageItem.h"  
-#include "../../Data/Character/CharacterBase.h" // Character クラスの完全な定義を含むヘッダーをインクルード  
-#include "../../System/TextView/TextView.h"
+#include "Data/Character/CharacterBase.h" // Character クラスの完全な定義を含むヘッダーをインクルード  
+#include "System/TextView/TextView.h"
 
 WastageItem::WastageItem(const ItemData& arg_data) : ItemBase(arg_data) 
 {
