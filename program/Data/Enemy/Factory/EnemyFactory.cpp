@@ -1,5 +1,5 @@
-#include "../EnemyDataBase.h"
-#include "../../Character/CharacterBase.h"
+#include "Data/Enemy/EnemyDataBase.h"
+#include "Data/Character/CharacterBase.h"
 #include "EnemyFactory.h"
 
 std::unique_ptr<Character>
@@ -23,7 +23,5 @@ EnemyFactory::CreateEnemy(const std::string& enemyID)
 
 	
 
-	return std::make_unique<Character>(
-		sta
-	);
+	return std::make_unique<Character>(sta);
 }

@@ -6,7 +6,7 @@
 #include <Windows.h>
 #endif // _WIN32
 
-#include "../../Singleton/Singleton.h"
+#include "Singleton/Singleton.h"
 
 class TextView : public Singleton<TextView>
 {

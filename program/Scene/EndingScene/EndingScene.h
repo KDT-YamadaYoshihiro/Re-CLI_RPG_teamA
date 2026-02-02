@@ -1,5 +1,5 @@
 #pragma once
-#include "../SceneBase/SceneBase.h"
+#include "Scene/SceneBase/SceneBase.h"
 
 class EndingScene : public SceneBase
 {

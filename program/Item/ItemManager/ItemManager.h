@@ -3,7 +3,8 @@
 #include <unordered_map>
 #include <string>
 #include <memory>
-#include "../ItemBase.h"
+#include "Item/ItemBase.h"
+#include "Singleton/Singleton.h"
 
 // アイテムスタック構造体
 struct ItemStack
@@ -13,9 +14,11 @@ struct ItemStack
 };
 
 // 所持アイテム管理
-class ItemManager
+class ItemManager : public Singleton<ItemManager>
 {
 private:
+
+	friend class Singleton<ItemManager>;
 
 	// Item所持管理をunordered_mapで行う
 	std::unordered_map<int, ItemStack> m_items;

@@ -2,11 +2,11 @@
 #include <vector>
 #include <unordered_set>
 
-#include "../Item/ItemManager/ItemManager.h"
-#include "../System/KeyInput/KeyInput.h"
-#include "../System/TextView/TextView.h"
-#include "../Item/ItemFactory/ItemFactory.h"
-#include "../Data/Character/CharacterBase.h"
+#include "Item/ItemManager/ItemManager.h"
+#include "System/KeyInput/KeyInput.h"
+#include "System/TextView/TextView.h"
+#include "Item/ItemFactory/ItemFactory.h"
+#include "Data/Character/CharacterBase.h"
 
 struct ShopSlot
 {
@@ -40,6 +40,10 @@ public:
     /// </summary>
     void Update();
 
+    /// <summary>
+    /// 終了チェック
+    /// </summary>
+    bool IsExit();
 
 private:
 

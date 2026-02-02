@@ -1,5 +1,5 @@
 #include "ItemManager.h"
-#include "../ItemFactory/ItemFactory.h"
+#include "Item/ItemFactory/ItemFactory.h"
 
 void ItemManager::AddItem(int itemID, Character& owner)
 {

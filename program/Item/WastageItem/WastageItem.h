@@ -1,5 +1,5 @@
 #pragma once
-#include "../ItemBase.h"
+#include "Item/ItemBase.h"
 
 class Character; // 前方宣言
 // 消費型アイテム

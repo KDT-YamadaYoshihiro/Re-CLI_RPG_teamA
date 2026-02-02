@@ -1,6 +1,6 @@
 #include "PlayerFactory.h"
-#include "../../Character/CharacterBase.h"
-#include "../PlayerDataBase.h"
+#include "Data/Character/CharacterBase.h"
+#include "Data//Player/PlayerDataBase.h"
 
 std::unique_ptr<Character>
 PlayerFactory::CreatePlayer(const std::string& playerID)
@@ -22,7 +22,5 @@ PlayerFactory::CreatePlayer(const std::string& playerID)
 	sta.speed = data.speed;
 
 
-	return std::make_unique<Character>(
-		sta
-	);
+	return std::make_unique<Character>(sta);
 }

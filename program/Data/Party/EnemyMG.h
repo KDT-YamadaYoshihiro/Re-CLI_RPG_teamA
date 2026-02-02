@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../Enemy/Factory/EnemyFactory.h"
-#include "../Character/CharacterBase.h"
+#include "Data/Enemy/Factory/EnemyFactory.h"
+#include "Data/Character/CharacterBase.h"
 
 class EnemyMG {
 private:
@@ -24,5 +24,11 @@ public:
         std::vector<Character*> actives;
         for (auto& e : enemies) if (e->IsLife()) actives.push_back(e.get());
         return actives;
+    }
+
+    // エネミーリストのリセット
+    void Clear()
+    {
+        enemies.clear();
     }
 };
