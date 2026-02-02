@@ -13,7 +13,18 @@ private:
 
 public:
     // キャラの追加
-    void AddMember(std::unique_ptr<Character> chara) { members.push_back(std::move(chara)); }
+    bool AddMember(std::unique_ptr<Character> chara) 
+    { 
+        /*members.push_back(std::move(chara));*/ 
+
+        // 制限・失敗返却
+        if (!chara || members.size() >= PARTY_MAX)
+        {
+            return false;
+        }
+        members.push_back(std::move(chara));
+        return true;
+    }
 
     // 生存しているメンバーのリストを返す
     std::vector<Character*> GetActiveMembers() {
@@ -23,5 +34,19 @@ public:
     }
 
     int GetSP() const { return sharedSP; }
-    void UseSP(int cost) { sharedSP -= cost; }
+    bool UseSP(int cost) 
+    {    
+        if (cost < 0)
+        {
+            return false;
+        }
+
+        if (sharedSP < cost)
+        {
+            return false;
+        }
+
+        sharedSP -= cost;
+        return true;
+    }
 };

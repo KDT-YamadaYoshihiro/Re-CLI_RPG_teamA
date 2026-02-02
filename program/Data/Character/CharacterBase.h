@@ -36,8 +36,9 @@ protected:
 public:
 
 	Character(Status baseStatas) :state(baseStatas){}
-
-	~Character(){}
+	// 仮想デストラクタ
+	virtual ~Character(){}
+	
 
 	/// <summary>
 	/// ファクションゲッター

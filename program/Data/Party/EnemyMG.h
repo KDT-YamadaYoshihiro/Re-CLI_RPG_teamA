@@ -13,7 +13,10 @@ public:
     void SpawnWave(const std::vector<std::string>& ids) {
         enemies.clear();
         for (const auto& id : ids) {
-            enemies.push_back(factory.CreateEnemy(id));
+            // ¸”s‚Ìˆ—
+            if (auto enemyUnit = factory.CreateEnemy(id)) {
+                enemies.push_back(std::move(enemyUnit));
+            }
         }
     }
 

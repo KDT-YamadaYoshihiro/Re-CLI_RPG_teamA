@@ -4,6 +4,7 @@
 #include "BattaleClc.h"
 #include "../System/KeyInput/KeyInput.h"
 #include "../System/TextView/TextView.h"
+#include <memory>
 
 // 選択の進行状況
 enum class SelectStep {
@@ -34,6 +35,11 @@ private:
     std::string actionLog = "戦闘開始！"; 
 
 public:
+
+    explicit BattleManager(PartyMG & partyRef, EnemyMG & enemyRef)
+         : party(&partyRef), enemy(&enemyRef) 
+    {}
+
     void Update() {
         // 全生存キャラクターを1つのリストに集める
         std::vector<Character*> all = party->GetActiveMembers();
@@ -90,7 +96,7 @@ public:
 
                 if (KeyInput::Instance().ChechKey(KeyInput::ENTER)) {
                     if (skillType == 1) { // 2:全体攻撃
-                        ExecuteSkill(2, nullptr); // 対象選択不要
+                        ExecuteSkill(1, nullptr); // 対象選択不要
                         FinishTurn();
                     }
                     else {
@@ -102,13 +108,21 @@ public:
                 // 対象リストの取得（スキル3なら味方、それ以外なら敵）
                 std::vector<Character*>* currentTargets = (actionType == 1 && skillType == 2) ? &partyList : &enemyList;
 
+                // 範囲外アクセス対策
+                if (currentTargets->empty()) {
+                    target = 0;
+                    return;
+                }
+
                 if (KeyInput::Instance().ChechKey(KeyInput::UP)) {
-                    target++;
-                    int maxIndex = static_cast<int>(currentTargets->size()) - 1;
+                    //target++;
+                    //int maxIndex = static_cast<int>(currentTargets->size()) - 1;
+                    target = (target + 1) % static_cast<int>(currentTargets->size());
                 }
                 if (KeyInput::Instance().ChechKey(KeyInput::DOWN)) {
-                    target--;
-                    if (target < 0) target = 0;
+                    //target--;
+                    //if (target < 0) target = 0;
+                    target = (target + static_cast<int>(currentTargets->size()) - 1) % static_cast<int>(currentTargets->size());
                 }
 
                 if (KeyInput::Instance().ChechKey(KeyInput::ENTER)) {
@@ -137,6 +151,16 @@ public:
 
     // スキルの使用
     void ExecuteSkill(int type, Character* target) {
+        // チェック
+        if (!actionUnit)
+        {
+            return;
+        }
+        if ((type == 0 || type == 2) && !target)
+        {
+            return;
+        }
+
         int damage = 0;
         switch (type) {
         case 0: // 単体ダメージ
@@ -166,6 +190,12 @@ public:
     void ExecuteEnemyAI() {
         // ターゲットのリストを取得
         std::vector<Character*> targetList = party->GetActiveMembers();
+
+        // 空ならターン終了/勝敗処理へ分岐
+        if (targetList.empty()) {
+            FinishTurn();
+            return;
+        }
 
         // ターゲットを決定
         Character* targetUnit = targetList[rand() % targetList.size()];

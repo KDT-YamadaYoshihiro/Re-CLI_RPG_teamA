@@ -141,6 +141,8 @@
     <ClCompile Include="program\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program\Battale\BattaleClc.h" />
+    <ClInclude Include="program\Battale\Battelemanager.h" />
     <ClInclude Include="program\Data\Enemy\EnemyData.h" />
     <ClInclude Include="program\Data\Enemy\EnemyDataBase.h" />
     <ClInclude Include="program\Data\Enemy\Factory\EnemyFactory.h" />
