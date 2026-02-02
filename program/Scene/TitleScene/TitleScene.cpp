@@ -17,7 +17,6 @@ bool TitleScene::Init()
 
 void TitleScene::Update()
 {
-	
 }
 
 void TitleScene::Render()

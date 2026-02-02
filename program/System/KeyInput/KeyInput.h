@@ -1,5 +1,6 @@
 #pragma once
 #include <conio.h>
+#include "../../Singleton/Singleton.h"
 
 class KeyInput : public Singleton<KeyInput>
 {
