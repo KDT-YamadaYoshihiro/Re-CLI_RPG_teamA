@@ -35,7 +35,7 @@ public:
 	}
 
 	// 速度計算
-	void AddSpeed(int& ActionPoint,int arg_speed,int& ActionValue) {
+	void AddSpeed(int ActionPoint,int arg_speed,int ActionValue) {
 
 		// キャラクターの行動ポイントを増やす
 		ActionPoint = ActionPoint + arg_speed;
