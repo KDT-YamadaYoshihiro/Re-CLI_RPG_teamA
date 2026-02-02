@@ -13,7 +13,6 @@ enum class GamePhase
     MAP_SELECT,  // マップ移動先選択
     BATTLE,      // 戦闘中
     SHOP,        // ショップ
-    EVENT,       // イベント
     GAMEOVER,    // ゲームオーバー
     CLEAR        // ゲームクリア
 };
