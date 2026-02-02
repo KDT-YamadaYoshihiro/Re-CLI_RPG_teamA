@@ -202,8 +202,6 @@ void InGameScene::Render()
 	case GamePhase::BATTLE:
 		if(m_battle) m_battle->Render();
 		break;
-	case GamePhase::SHOP:
-		break;
 	}
 
 	TextView::Instance().RenderFrame();
