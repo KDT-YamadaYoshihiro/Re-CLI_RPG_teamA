@@ -45,7 +45,8 @@ private:
 
 	// 現在の階層
 	int m_currentFloor = 0;
-
+	// 選択状態の保持
+	int m_cursor = 0;
 	static constexpr int STAGE_MAX = 10;		// 最大ステージ数
 	static constexpr int SELECT_UP = 1;			// 入力値：上
 	static constexpr int SELECT_DOWN = 2;		// 入力値：下
