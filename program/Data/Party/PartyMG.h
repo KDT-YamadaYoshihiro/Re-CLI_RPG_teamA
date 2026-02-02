@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include "../Character/CharacterBase.h"
 
 #define PARTY_MAX 4
-class Character;
 
 class PartyMG {
 private:
