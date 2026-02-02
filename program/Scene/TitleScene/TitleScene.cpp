@@ -34,7 +34,7 @@ void TitleScene::Render()
 {
 	TextView::Instance().Add(
 		"======CLI_RPG!!======\n"
-		"===SPACEtoスタート===\n");
+		"====ENTERtoSTART====\n");
 	TextView::Instance().RenderFrame();
 
 }
