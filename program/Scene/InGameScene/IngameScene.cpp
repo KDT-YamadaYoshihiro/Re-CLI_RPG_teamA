@@ -167,12 +167,6 @@ void InGameScene::Update()
 		}
 		break;
 	}
-	case GamePhase::EVENT:
-	{
-		TextView::Instance().Add("Event Phase...\n");
-		m_currentPhase = GamePhase::MAP_SELECT;
-		break;
-	}
 	case GamePhase::GAMEOVER:
 	{
 		// I—¹ˆ—
