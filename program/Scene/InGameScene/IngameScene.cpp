@@ -155,6 +155,7 @@ void InGameScene::Update()
 					// 勝利ならマップへ戻る
 					m_battle.reset();
 					m_currentPhase = GamePhase::MAP_SELECT;
+					ItemManager::Instance().AddGold(m_enemy.drop_gold);
 				}
 				else {
 					// 敗北ならゲームオーバー（またはタイトル）へ
@@ -254,16 +255,17 @@ std::vector<std::string> InGameScene::EnemyEntity(int& money,int floor)
 	int count = (rand() % 3) + 1;
 	money = 0;
 
+	int enemy_drop_money = 0;
 	// 3. ランダムに抽出してリストに追加
 	for (int i = 0; i < count; ++i)
 	{
 		// poolのサイズで剰余を取ってインデックスを決める
 		int index = rand() % enemyPool.size();
 		ids.push_back(enemyPool[index]);
-		int enemy_drop_money = index * 10;
-		money += 10 * (floor + 1);
+		enemy_drop_money += index * 10;
 	}
 
+	money += enemy_drop_money * (floor + 1);
 
 	return ids;
 }
