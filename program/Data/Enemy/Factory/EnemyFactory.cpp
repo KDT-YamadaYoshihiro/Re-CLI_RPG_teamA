@@ -22,6 +22,7 @@ EnemyFactory::CreateEnemy(const std::string& enemyID)
 	sta.speed = data.speed;
 
 	
+	
 
 	return std::make_unique<Character>(sta);
 }
