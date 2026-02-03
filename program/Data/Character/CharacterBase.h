@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
 
+// ファクション列挙型
 enum class Faction {
 	Player,
 	Enemy
 };
 
+// キャラクターのステータス構造体
 struct Status {
 	std::string name;
 
@@ -28,7 +30,7 @@ struct Status {
 };
 
 
-
+/// キャラクターベースクラス
 class Character {
 protected:
 	Status state;

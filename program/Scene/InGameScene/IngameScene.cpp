@@ -37,7 +37,7 @@ bool InGameScene::Init()
 	PlayerFactory pFactory;
 	m_party.AddMember(pFactory.CreatePlayer("hero"));
 	m_party.AddMember(pFactory.CreatePlayer("mage"));
-	m_party.AddMember(pFactory.CreatePlayer("assassin"));
+	m_party.AddMember(pFactory.CreatePlayer("ninja"));
 	m_party.AddMember(pFactory.CreatePlayer("cleric"));
 
 	m_battle = std::make_unique<BattleSystem>(m_party, m_enemy);
@@ -103,7 +103,7 @@ void InGameScene::Update()
 			if (nextScene == SceneType::BOSS)
 			{
 				// É{ÉX
-				enemyIds.push_back("Boss");
+				enemyIds.push_back("boss");
 				m_enemy.SpawnWave(enemyIds);
 			}
 			else {		

@@ -18,8 +18,12 @@ public:
 		// ŒvZŒã‚Ì–hŒä—Í
 		int After_DEF = arg_DEF / 4;
 
-		return After_ATK - After_DEF;
+		int Dmage_AD = After_ATK - After_DEF;
 
+		if( Dmage_AD < 1) {
+			Dmage_AD = 1;
+		}
+		return Dmage_AD;
 	}
 
 	// –‚–@UŒ‚‚ÌŒvZ
@@ -31,7 +35,12 @@ public:
 		// ŒvZŒã‚Ì–‚–@UŒ‚—Í
 		int After_MND = arg_MND / 4;
 
-		return After_INT - After_MND;
+		int Dmage_AP = After_INT - After_MND;
+
+		if ( Dmage_AP < 1) {
+			Dmage_AP = 1;
+		}
+		return Dmage_AP;
 	}
 
 	//// ‘¬“xŒvZ
