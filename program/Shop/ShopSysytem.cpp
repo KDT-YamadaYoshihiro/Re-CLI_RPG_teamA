@@ -161,12 +161,21 @@ void ShopSystem::BuyCurrent()
 
     int price = slot.data.price;
 
+    // 購入済は不可
+    if (slot.sold)
+    {
+        TextView::Instance().Add("そのアイテムは既に購入済みです。\n");
+        return;
+    }
+
+
     // ゴールドチェック＆消費
     if (!m_itemManager.ConsumeGold(price))
     {
         TextView::Instance().Add("ゴールドが足りない！\n");
         return;
     }
+
 
     // アイテム付与
     m_itemManager.AddItem(slot.data.id, m_player);
@@ -177,6 +186,8 @@ void ShopSystem::BuyCurrent()
     {
         m_bannedRelics.insert(slot.data.id);
     }
+
+
 
     TextView::Instance().Add(slot.data.name + "を購入した。\n""残りゴールド：" + std::to_string(m_itemManager.GetGold()) + " G\n");
 }
