@@ -131,7 +131,7 @@ void InGameScene::Update()
 
 			// バトルが終了したかチェック
 			if (m_battle->IsFinished()) {
-				if (KeyInput::Instance().ChechKey(KeyInput::ENTER)) {
+				if (KeyInput::Instance().ChechKey(KeyInput::SPACE)) {
 					if (m_battle->IsVictory()) {
 						// 勝利ならマップへ戻る
 						m_battle.reset();
