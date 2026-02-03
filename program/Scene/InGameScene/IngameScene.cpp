@@ -197,7 +197,7 @@ void InGameScene::Render()
 		m_map->DrawInfo();
 		break;
 	case GamePhase::BATTLE:
-		if(m_battle) m_battle->Render();
+		if(m_battle) m_battle->Render(m_enemy.drop_gold);
 		break;
 	}
 

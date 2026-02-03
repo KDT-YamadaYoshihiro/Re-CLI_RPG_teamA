@@ -273,7 +273,7 @@ public:
         m_itemIndex = 0;
     }
 
-    void Render() {
+    void Render(int money) {
         // 描画の初期化
         TextView::Instance().Add("====BATTLE====\n");
 
@@ -313,6 +313,8 @@ public:
 
         // 終了時は結果を表示、進行中はコマンドを表示
         if (m_isFinished) {
+            TextView::Instance().Add(m_isVictory ? "敵が " + std::to_string(money) + "ゴールドを落とした。 \n" : "");
+            ItemManager::Instance().AddGold(m_isVictory ? money : 0);
             TextView::Instance().Add(m_isVictory ? "[勝利！ Spaceでマップへ]" : "[敗北... Spaceでタイトルへ]");
         }
         else {
