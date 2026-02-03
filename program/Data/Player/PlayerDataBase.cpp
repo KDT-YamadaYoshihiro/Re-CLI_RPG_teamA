@@ -7,10 +7,10 @@ const std::unordered_map<std::string, PlayerData>
 PlayerDataBase::data =
 {
   //{"nameID",{"name",MaxHP,ATK,DEF,INT,MND,speed}},
-    {"hero", {"óEé“", 100, 30, 20, 0, 15, 50}},
-    {"mage", {"ñÇì±ém", 60, 5, 8, 45, 25, 40}},
-    {"assassin", {"à√éEé“", 75, 25, 12, 0, 10, 85}},
-    {"cleric", {"êπêEé“", 85, 10, 15, 20, 40, 45}},
+    {"hero", {"óEé“", 100, 30, 20, 30, 15, 50}},
+    {"mage", {"ñÇì±ém", 60, 5, 8, 55, 25, 40}},
+    {"ninja", {"îEé“", 75, 25, 12, 20, 10, 85}},
+    {"cleric", {"êπêEé“", 85, 10, 15, 35, 40, 45}},
 };
 
 
