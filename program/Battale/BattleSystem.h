@@ -37,6 +37,8 @@ private:
     int m_itemIndex = 0;  
     // 行動記録
     std::string m_actionLog = "戦闘開始！"; 
+    // SP表示用
+	std::string m_spLog = "";
 
     // --- 追加：勝敗判定用フラグ ---
     bool m_isFinished = false; // バトルが終了したか
@@ -71,8 +73,19 @@ public:
                     if (chara->GetState().actionPoint >= 1000) {
                         m_actionCheck = true;
                         m_actionUnit = chara;
-                        break;
                     }
+                    // SP表示の更新
+                    m_spLog = "";
+                    for (int i = 0; i < 3; ++i) {
+                        if (i < m_party->GetSP()) {
+                            m_spLog += "● ";
+                        }
+                        else {
+                            m_spLog += "○ ";
+                        }
+                    }
+
+                    break;
                 }
             }
         }
@@ -219,8 +232,8 @@ public:
             target->Heal(healVal);
             m_actionLog = m_actionUnit->GetState().name + " のスキル！ " + target->GetState().name + " に " + std::to_string(healVal) + " を回復！";
             break;
-        }// case 2
-        }// switch
+        }
+        }
     }
 
     void ExecuteEnemyAI() {
@@ -263,7 +276,6 @@ public:
     void Render() {
         // 描画の初期化
         TextView::Instance().Add("====BATTLE====\n");
-        TextView::Instance().Add(m_actionLog + "\n\n");
 
         // 味方の描画
         TextView::Instance().Add("【 味方 】");
@@ -289,14 +301,12 @@ public:
         // 戦闘のログの描画
         TextView::Instance().Add("【 ログ 】");
         TextView::Instance().Add(m_actionLog); 
+
+        TextView::Instance().Add("--------------------------------\n");
+
         // 現在のSPを表示　ある分は●、無い分は○で表示
-        for(int i = 0; i < 3; ++i) {
-            if (i < m_party->GetSP()) {
-                TextView::Instance().Add("●");
-            } else {
-                TextView::Instance().Add("○");
-            }
-		}
+		TextView::Instance().Add("【 SP 】 ");
+        TextView::Instance().Add(m_spLog);
 
         TextView::Instance().Add("--------------------------------\n");
 

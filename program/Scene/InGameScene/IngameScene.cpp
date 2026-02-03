@@ -98,7 +98,7 @@ void InGameScene::Update()
 			m_enemy.Clear();
 
 			// SkillPointをリセット
-			//m_party.SetSP(3);
+			m_party.SetSP(2);
 
 			// 2. 敵を生成 (EnemyDataBaseにあるIDを指定)
 
