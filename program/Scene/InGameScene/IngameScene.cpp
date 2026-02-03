@@ -97,6 +97,9 @@ void InGameScene::Update()
 			// 1. 以前の敵情報をクリア (EnemyMGにClear関数が必要)
 			m_enemy.Clear();
 
+			// SkillPointをリセット
+			m_party.SetSP(2);
+
 			// 2. 敵を生成 (EnemyDataBaseにあるIDを指定)
 
 			std::vector<std::string> enemyIds;
@@ -241,8 +244,8 @@ std::vector<std::string> InGameScene::EnemyEntity(int& money,int floor)
 		// poolのサイズで剰余を取ってインデックスを決める
 		int index = rand() % enemyPool.size();
 		ids.push_back(enemyPool[index]);
-		int enemy_drop_money = std::stoi(ids[count]) * 10;
-		money += enemy_drop_money * (floor + 1);
+		//int enemy_drop_money = std::stoi(ids[count]) * 10;
+		money += 10 * (floor + 1);
 	}
 
 
