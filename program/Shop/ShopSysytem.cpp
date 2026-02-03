@@ -37,6 +37,13 @@ void ShopSystem::GenerateSlots()
             continue;
         }
 
+        //　お金は対象外にする
+		if (data.type == ItemType::Gold)
+        {
+            continue;
+		}
+
+        //　ラインアップ
         pool.push_back(data);
     }
 
