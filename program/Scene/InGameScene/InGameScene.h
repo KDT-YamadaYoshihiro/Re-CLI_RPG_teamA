@@ -52,6 +52,6 @@ private:
     /// <summary>
     /// ƒ‰ƒ“ƒ_ƒ€‚È“G‚ÌIDƒŠƒXƒg‚ğ¶¬‚·‚é
     /// </summary>
-    std::vector<std::string> EnemyEntity();
+    std::vector<std::string> EnemyEntity(int& money,int floor);
 
 };
