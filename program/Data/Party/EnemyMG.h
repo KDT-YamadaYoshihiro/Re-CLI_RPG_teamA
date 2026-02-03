@@ -10,6 +10,10 @@ private:
     EnemyFactory factory;
 
 public:
+
+    // —Ž‚Æ‚·‚¨‹à
+    int drop_gold;
+
     void SpawnWave(const std::vector<std::string>& ids) {
         enemies.clear();
         for (const auto& id : ids) {

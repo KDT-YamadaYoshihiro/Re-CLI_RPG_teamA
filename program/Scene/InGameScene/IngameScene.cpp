@@ -108,7 +108,7 @@ void InGameScene::Update()
 			}
 			else {		
 				// ボス以外
-				enemyIds = EnemyEntity();
+				enemyIds = EnemyEntity(m_enemy.drop_gold,m_map->Get_current_floor());
 				m_enemy.SpawnWave(enemyIds);
 			}
 
@@ -131,7 +131,7 @@ void InGameScene::Update()
 
 			// バトルが終了したかチェック
 			if (m_battle->IsFinished()) {
-				if (KeyInput::Instance().ChechKey(KeyInput::ENTER)) {
+				if (KeyInput::Instance().ChechKey(KeyInput::SPACE)) {
 					if (m_battle->IsVictory()) {
 						// 勝利ならマップへ戻る
 						m_battle.reset();
@@ -218,7 +218,7 @@ void InGameScene::PhaseTransition(SceneType nextScene)
 	}
 }
 
-std::vector<std::string> InGameScene::EnemyEntity()
+std::vector<std::string> InGameScene::EnemyEntity(int& money,int floor)
 {
 	std::vector<std::string> ids;
 
@@ -233,6 +233,7 @@ std::vector<std::string> InGameScene::EnemyEntity()
 	// 2. 出現数を決定 (例: 1体 ～ 3体)
 	// rand() % 3 で 0~2 になるので +1 して 1~3
 	int count = (rand() % 3) + 1;
+	money = 0;
 
 	// 3. ランダムに抽出してリストに追加
 	for (int i = 0; i < count; ++i)
@@ -240,7 +241,11 @@ std::vector<std::string> InGameScene::EnemyEntity()
 		// poolのサイズで剰余を取ってインデックスを決める
 		int index = rand() % enemyPool.size();
 		ids.push_back(enemyPool[index]);
+		int enemy_drop_money = std::stoi(ids[count]) * 10;
+		money += enemy_drop_money * (floor + 1);
 	}
+
 
 	return ids;
 }
+

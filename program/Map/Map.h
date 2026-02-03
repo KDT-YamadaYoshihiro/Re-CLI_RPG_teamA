@@ -47,6 +47,8 @@ public:
 
 	bool GetIsCleared() const { return m_isCleared; }
 
+	int Get_current_floor() { return m_currentFloor; }
+
 private:
 	/// <summary>
 	/// ステージを文字列に変更
