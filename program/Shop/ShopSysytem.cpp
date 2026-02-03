@@ -102,6 +102,7 @@ void ShopSystem::Render()
         std::string line;
         line += (i == m_cursor ? "> " : "  ");
         line += slot.data.name;
+		line += " - " + std::to_string(slot.data.price) + " G";
 
         if (slot.sold)
         {
