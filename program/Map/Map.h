@@ -45,7 +45,10 @@ public:
 	/// <returns>次のシーンのタイプ</returns>
 	SceneType ReturnScene(int select);
 
-	bool GetIsCleared() const { return m_isCleared; }
+	bool GetIsCleared() const
+	{ 		
+		return m_isCleared; 
+	}
 
 private:
 	/// <summary>
