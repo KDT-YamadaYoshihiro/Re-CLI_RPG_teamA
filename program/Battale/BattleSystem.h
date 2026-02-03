@@ -50,12 +50,8 @@ public:
 
     void Update() {
 
-        if (m_isFinished)
-        {
-            return;
-        }
-
         CheckBattleEnd();
+
         if (m_isFinished)
         {
             return;
@@ -84,12 +80,6 @@ public:
             // コマンド選択中
             SelectSkill();
         }
-
-       if(m_enemy->GetActiveEnemies().empty()) {
-            m_isFinished = true;
-            m_isVictory = true;
-            m_actionLog = "敵を全滅させた！";
-       }
     }
 
     void SelectSkill() {
@@ -305,7 +295,7 @@ public:
 
         // 終了時は結果を表示、進行中はコマンドを表示
         if (m_isFinished) {
-            TextView::Instance().Add(m_isVictory ? "[勝利！ Enterでマップへ]" : "[敗北... Enterでタイトルへ]");
+            TextView::Instance().Add(m_isVictory ? "[勝利！ Spaceでマップへ]" : "[敗北... Spaceでタイトルへ]");
         }
         else {
             DrawCommand(); // 既存の描画ロジック
