@@ -76,12 +76,6 @@ bool InGameScene::Init()
 /// </summary>
 void InGameScene::Update()
 {
-	// ダンジョン踏破時
-	if (m_map->GetIsCleared())
-	{
-		TextView::Instance().Reset();
-		SceneManager::Instance().ChangeScene<EndingScene>();
-	}
 
 	switch (m_currentPhase)
 	{
@@ -89,6 +83,14 @@ void InGameScene::Update()
 	{
 		// 内部で入力待ちループが走るため、戻ってきたときは選択済み
 		SceneType nextScene = m_map->SelectScene();
+
+		// ダンジョン踏破時
+		if (m_map->GetIsCleared())
+		{
+			TextView::Instance().Reset();
+			SceneManager::Instance().ChangeScene<EndingScene>();
+		}
+
 
 		// 選択されたシーンに応じてフェーズを切り替える
 		if (nextScene == SceneType::BATTLE || nextScene == SceneType::BOSS) {
@@ -125,28 +127,42 @@ void InGameScene::Update()
 			m_currentPhase = GamePhase::SHOP;
 		}
 
+		// ダンジョン踏破時
+		if (m_map->GetIsCleared())
+		{
+			TextView::Instance().Reset();
+			SceneManager::Instance().ChangeScene<EndingScene>();
+		}
+
 		break;
 	}
 	case GamePhase::BATTLE:						// バトル処理
 	{
-		if (m_battle) {
-			m_battle->Update();
+		if (!m_battle) {
+			return;
+		}
+		m_battle->Update();
 
-			// バトルが終了したかチェック
-			if (m_battle->IsFinished()) {
-				if (KeyInput::Instance().ChechKey(KeyInput::SPACE)) {
-					if (m_battle->IsVictory()) {
-						// 勝利ならマップへ戻る
-						m_battle.reset();
-						m_currentPhase = GamePhase::MAP_SELECT;
-					}
-					else {
-						// 敗北ならゲームオーバー（またはタイトル）へ
-						 SceneManager::Instance().ChangeScene<TitleScene>();
-					}
+
+		// バトルが終了したかチェック
+		if (m_battle->IsFinished()) {
+
+			if (KeyInput::Instance().ChechKey(KeyInput::SPACE)) {
+
+
+				if (m_battle->IsVictory())
+				{
+					// 勝利ならマップへ戻る
+					m_battle.reset();
+					m_currentPhase = GamePhase::MAP_SELECT;
+				}
+				else {
+					// 敗北ならゲームオーバー（またはタイトル）へ
+						SceneManager::Instance().ChangeScene<TitleScene>();
 				}
 			}
 		}
+		
 		 break;
 	}
 	case GamePhase::SHOP:

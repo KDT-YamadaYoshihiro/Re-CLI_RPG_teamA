@@ -45,7 +45,10 @@ public:
 	/// <returns>次のシーンのタイプ</returns>
 	SceneType ReturnScene(int select);
 
-	bool GetIsCleared() const { return m_isCleared; }
+	bool GetIsCleared() const
+	{ 		
+		return m_isCleared; 
+	}
 
 	int Get_current_floor() { return m_currentFloor; }
 

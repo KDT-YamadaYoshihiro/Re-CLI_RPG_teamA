@@ -14,7 +14,6 @@ void Map::DrawInfo(/* Playerと所持金*/)
 
 	// クリア済みなら表示をスキップ
 	if (m_isCleared) {
-		text.Add("=== 全階層踏破！ ===");
 		return;
 	}
 
@@ -40,6 +39,11 @@ SceneType Map::SelectScene()
 	if (input.ChechKey(KeyInput::UP))   m_cursor = 0;
 	if (input.ChechKey(KeyInput::DOWN)) m_cursor = 1;
 
+	// 10階層（BOSS）を終えたらクリアフラグを立てる
+	if (m_currentFloor >= STAGE_MAX) {
+		m_isCleared = true;
+	}
+
 	// 決定
 	if (input.ChechKey(KeyInput::ENTER)) {
 		return ReturnScene(m_cursor);
@@ -55,9 +59,8 @@ SceneType Map::ReturnScene(int select)
 	const auto& floor = m_floorTable[m_currentFloor];
 	SceneType type = (select == 0) ? floor.Up : floor.Down;
 
-	// 10階層（BOSS）を終えたらクリアフラグを立てる
+	// 10階層（BOSS）こえてなかったら
 	if (m_currentFloor >= STAGE_MAX) {
-		m_isCleared = true;
 	}
 	else
 	{
