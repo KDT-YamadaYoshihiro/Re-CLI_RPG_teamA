@@ -74,6 +74,24 @@ const std::unordered_map<int, ItemStack>& ItemManager::GetAllItems()
 	return m_items;
 }
 
+const std::unordered_map<int, ItemStack>& ItemManager::GetNonGoldItems()
+{
+
+    static std::unordered_map<int, ItemStack> nonGoldItems;
+    nonGoldItems.clear();
+    for (const auto& pair : m_items)
+    {
+        int itemId = pair.first;
+        if (itemId == static_cast<int>(ItemIdType::Gold))
+        {
+            continue;
+        }
+        nonGoldItems.emplace(itemId, pair.second);
+    }
+	return nonGoldItems;
+
+}
+
 int ItemManager::GetGold() const
 {
 

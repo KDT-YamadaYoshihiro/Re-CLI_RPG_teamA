@@ -44,6 +44,11 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	const std::unordered_map<int, ItemStack>& GetAllItems();
+	
+	/// <summary>
+	/// ‚¨‹à‚ğ‚Ì‚¼‚­ŠƒAƒCƒeƒ€
+	/// </summary>
+	const std::unordered_map<int, ItemStack>& GetNonGoldItems();
 
 	/// <summary>
 	/// ‚¨‹à‚Ìæ“¾
@@ -63,6 +68,8 @@ public:
 	/// </summary>
 	/// <param name="amount"></param>
 	void AddGold(int amount);
+
+	
 
 };
 

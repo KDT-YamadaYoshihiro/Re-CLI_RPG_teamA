@@ -133,7 +133,7 @@ public:
 
             case SelectStep::SELECT_ITEM:
             {
-                auto items = ItemManager::Instance().GetAllItems();
+                auto items = ItemManager::Instance().GetNonGoldItems();
                 if (items.empty()) {
                     m_actionLog = "アイテムを持っていません！";
                     m_select = SelectStep::SELECT_ACTION; // キャンセルして戻す
@@ -175,7 +175,7 @@ public:
 
 
     void ExecuteUseItem(Character* target) {
-        auto items = ItemManager::Instance().GetAllItems();
+        auto items = ItemManager::Instance().GetNonGoldItems();
         auto it = items.begin();
         std::advance(it, m_itemIndex);
         int itemID = it->first;
@@ -362,9 +362,9 @@ private:
                 selectingText += (m_skillType == 2) ? "●[回復]" : "  回復 ";
                 break;
 
-            case SelectStep::SELECT_ITEM: // ★追加アイテムリストの表示
+            case SelectStep::SELECT_ITEM: 
             {
-                auto items = ItemManager::Instance().GetAllItems();
+                auto items = ItemManager::Instance().GetNonGoldItems();
                 if (items.empty()) {
                     selectingText = "アイテムがありません！";
                 }
