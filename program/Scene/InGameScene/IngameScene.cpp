@@ -244,7 +244,7 @@ std::vector<std::string> InGameScene::EnemyEntity(int& money,int floor)
 		// poolのサイズで剰余を取ってインデックスを決める
 		int index = rand() % enemyPool.size();
 		ids.push_back(enemyPool[index]);
-		//int enemy_drop_money = std::stoi(ids[count]) * 10;
+		int enemy_drop_money = index * 10;
 		money += 10 * (floor + 1);
 	}
 
