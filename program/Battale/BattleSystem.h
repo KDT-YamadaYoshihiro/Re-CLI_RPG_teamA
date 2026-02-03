@@ -97,8 +97,8 @@ public:
 
                 if (KeyInput::Instance().ChechKey(KeyInput::ENTER)) {
                     // --- 修正：選択したアクションによって次のステップを分岐させる ---
-                    if (m_actionType == 0)      m_select = SelectStep::SELECT_TARGET;     // 通常攻撃
-                    else if (m_actionType == 1) m_select = SelectStep::SELECT_SKILL_TYPE; // スキル
+                    if (m_actionType == 0)      m_select = SelectStep::SELECT_TARGET , m_party->UseSP(-1);     // 通常攻撃
+                    else if (m_actionType == 1 and m_party->GetSP() > 0) m_select = SelectStep::SELECT_SKILL_TYPE, m_party->UseSP(1); // スキル
                     else if (m_actionType == 2) m_select = SelectStep::SELECT_ITEM;       // アイテム
                 }
                 break;
@@ -289,6 +289,14 @@ public:
         // 戦闘のログの描画
         TextView::Instance().Add("【 ログ 】");
         TextView::Instance().Add(m_actionLog); 
+        // 現在のSPを表示　ある分は●、無い分は○で表示
+        for(int i = 0; i < 3; ++i) {
+            if (i < m_party->GetSP()) {
+                TextView::Instance().Add("●");
+            } else {
+                TextView::Instance().Add("○");
+            }
+		}
 
         TextView::Instance().Add("--------------------------------\n");
 
